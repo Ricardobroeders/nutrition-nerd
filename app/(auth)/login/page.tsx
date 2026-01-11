@@ -76,20 +76,7 @@ export default function LoginPage() {
               {error}
             </div>
           )}
-
-          <div className="text-center text-sm text-muted-foreground">
-            <p>
-              Google OAuth moet worden geconfigureerd in Supabase Dashboard.
-              <br />
-              Zie <strong>SUPABASE_SETUP.md</strong> voor instructies.
-            </p>
-          </div>
-
-          <div className="pt-4 border-t">
-            <p className="text-xs text-center text-muted-foreground">
-              Door in te loggen ga je akkoord met onze voorwaarden en privacybeleid
-            </p>
-          </div>
+          
         </CardContent>
       </Card>
     </div>

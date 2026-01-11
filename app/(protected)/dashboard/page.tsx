@@ -4,9 +4,8 @@ import { useState, useMemo, useEffect } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Progress } from '@/components/ui/progress';
 import { StreakIndicator } from '@/components/streak-indicator';
-import { FoodSearch } from '@/components/food-search';
-import { supabase, getCurrentUser, getUserProfile, getFoodItems, getUserIntake, addIntake } from '@/lib/supabase';
-import { FoodItem, UserIntake } from '@/types';
+import { getCurrentUser, getUserProfile, getUserIntake } from '@/lib/supabase';
+import { UserIntake } from '@/types';
 import { useRouter } from 'next/navigation';
 
 function getMonday(date: Date): Date {
@@ -24,7 +23,6 @@ export default function DashboardPage() {
   const router = useRouter();
   const [user, setUser] = useState<any>(null);
   const [userProfile, setUserProfile] = useState<any>(null);
-  const [foodItems, setFoodItems] = useState<FoodItem[]>([]);
   const [intakeData, setIntakeData] = useState<UserIntake[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -45,9 +43,6 @@ export default function DashboardPage() {
 
         const profile = await getUserProfile(currentUser.id);
         setUserProfile(profile);
-
-        const items = await getFoodItems();
-        setFoodItems(items);
 
         const intake = await getUserIntake(currentUser.id);
         setIntakeData(intake as UserIntake[]);
@@ -75,31 +70,6 @@ export default function DashboardPage() {
     const uniqueIds = new Set(weekIntake.map((i) => i.food_item_id));
     return uniqueIds.size;
   }, [intakeData, monday]);
-
-  const handleAddItem = async (item: FoodItem) => {
-    if (!user) return;
-
-    // Check if already added today
-    const alreadyAdded = todaysIntake.some((i) => i.food_item_id === item.id);
-    if (alreadyAdded) return;
-
-    const { data, error } = await addIntake(user.id, item.id, today);
-
-    if (error) {
-      console.error('Error adding intake:', error);
-      return;
-    }
-
-    if (data) {
-      const newIntake: UserIntake = {
-        ...data,
-        food_item: item,
-      };
-      setIntakeData([...intakeData, newIntake]);
-    }
-  };
-
-  const todayItemIds = todaysIntake.map((i) => i.food_item_id);
   const weeklyProgress = (weeklyUniqueCount / 25) * 100;
 
   if (loading) {
@@ -188,22 +158,6 @@ export default function DashboardPage() {
         </CardContent>
       </Card>
 
-      {/* Quick add section */}
-      <Card>
-        <CardHeader>
-          <CardTitle>Voeg toe aan vandaag</CardTitle>
-          <CardDescription>
-            Zoek en voeg groente of fruit toe aan je dagelijkse intake
-          </CardDescription>
-        </CardHeader>
-        <CardContent>
-          <FoodSearch
-            foodItems={foodItems}
-            onAdd={handleAddItem}
-            addedItemIds={todayItemIds}
-          />
-        </CardContent>
-      </Card>
     </div>
   );
 }

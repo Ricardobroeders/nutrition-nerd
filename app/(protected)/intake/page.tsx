@@ -2,10 +2,13 @@
 
 import { useState, useMemo, useEffect } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { IntakeCalendar } from '@/components/intake-calendar';
-import { getCurrentUser, getUserIntake, removeIntake } from '@/lib/supabase';
-import { DailyIntakeSummary, UserIntake } from '@/types';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { FoodSearch } from '@/components/food-search';
+import { getCurrentUser, getFoodItems, getUserIntake, addIntake, removeIntake } from '@/lib/supabase';
+import { FoodItem, UserIntake } from '@/types';
 import { useRouter } from 'next/navigation';
+import { Button } from '@/components/ui/button';
+import { X } from 'lucide-react';
 
 function getMonday(date: Date): Date {
   const d = new Date(date);
@@ -18,11 +21,26 @@ function formatDate(date: Date): string {
   return date.toISOString().split('T')[0];
 }
 
+function formatDisplayDate(dateStr: string): string {
+  const date = new Date(dateStr);
+  return date.toLocaleDateString('nl-NL', {
+    weekday: 'long',
+    day: 'numeric',
+    month: 'long',
+  });
+}
+
 export default function IntakePage() {
   const router = useRouter();
   const [user, setUser] = useState<any>(null);
+  const [foodItems, setFoodItems] = useState<FoodItem[]>([]);
   const [intakeData, setIntakeData] = useState<UserIntake[]>([]);
   const [loading, setLoading] = useState(true);
+  const [showSuccess, setShowSuccess] = useState(false);
+  const [lastAddedItem, setLastAddedItem] = useState<string>('');
+
+  const today = formatDate(new Date());
+  const monday = getMonday(new Date());
 
   useEffect(() => {
     async function loadData() {
@@ -34,6 +52,9 @@ export default function IntakePage() {
         }
 
         setUser(currentUser);
+
+        const items = await getFoodItems();
+        setFoodItems(items);
 
         const intake = await getUserIntake(currentUser.id);
         setIntakeData(intake as UserIntake[]);
@@ -47,68 +68,57 @@ export default function IntakePage() {
     loadData();
   }, [router]);
 
-  // Group intake by date
-  const dailySummaries = useMemo<DailyIntakeSummary[]>(() => {
-    const grouped = new Map<string, UserIntake[]>();
+  // Calculate today's intake
+  const todaysIntake = useMemo(() => {
+    return intakeData.filter((i) => i.intake_date === today);
+  }, [intakeData, today]);
 
-    intakeData.forEach((intake) => {
-      const date = intake.intake_date;
-      if (!grouped.has(date)) {
-        grouped.set(date, []);
-      }
-      grouped.get(date)!.push(intake);
-    });
-
-    const summaries: DailyIntakeSummary[] = [];
-    grouped.forEach((items, date) => {
-      summaries.push({
-        date,
-        items: items.map((i) => i.food_item!).filter(Boolean),
-        unique_count: new Set(items.map((i) => i.food_item_id)).size,
-      });
-    });
-
-    return summaries.sort((a, b) => b.date.localeCompare(a.date));
-  }, [intakeData]);
-
-  // Calculate weekly stats
-  const weeklyStats = useMemo(() => {
-    const monday = getMonday(new Date());
-    const weekIntake = intakeData.filter((i) => {
+  // Calculate this week's intake
+  const weeklyIntake = useMemo(() => {
+    return intakeData.filter((i) => {
       const intakeDate = new Date(i.intake_date);
       return intakeDate >= monday;
     });
+  }, [intakeData, monday]);
 
-    const uniqueIds = new Set(weekIntake.map((i) => i.food_item_id));
-    const totalItems = weekIntake.length;
+  const todayItemIds = todaysIntake.map((i) => i.food_item_id);
+  const weeklyUniqueCount = new Set(weeklyIntake.map((i) => i.food_item_id)).size;
 
-    return {
-      unique: uniqueIds.size,
-      total: totalItems,
-    };
-  }, [intakeData]);
+  const handleAddItem = async (item: FoodItem) => {
+    if (!user) return;
 
-  const handleRemoveItem = async (date: string, itemId: string) => {
-    // Find the intake record to remove
-    const intakeToRemove = intakeData.find(
-      (intake) => intake.intake_date === date && intake.food_item_id === itemId
-    );
+    // Check if already added today
+    const alreadyAdded = todaysIntake.some((i) => i.food_item_id === item.id);
+    if (alreadyAdded) return;
 
-    if (!intakeToRemove) return;
+    const { data, error } = await addIntake(user.id, item.id, today);
 
-    const { error } = await removeIntake(intakeToRemove.id);
+    if (error) {
+      console.error('Error adding intake:', error);
+      return;
+    }
+
+    if (data) {
+      const newIntake: UserIntake = {
+        ...data,
+        food_item: item,
+      };
+      setIntakeData([...intakeData, newIntake]);
+      setLastAddedItem(item.name_nl);
+      setShowSuccess(true);
+      setTimeout(() => setShowSuccess(false), 2000);
+    }
+  };
+
+  const handleRemoveItem = async (intakeId: string) => {
+    const { error } = await removeIntake(intakeId);
 
     if (error) {
       console.error('Error removing intake:', error);
       return;
     }
 
-    // Update local state
-    setIntakeData(
-      intakeData.filter(
-        (intake) => !(intake.intake_date === date && intake.food_item_id === itemId)
-      )
-    );
+    setIntakeData(intakeData.filter((intake) => intake.id !== intakeId));
   };
 
   if (loading) {
@@ -128,70 +138,157 @@ export default function IntakePage() {
           Mijn Intake 📊
         </h1>
         <p className="text-gray-600 mt-1">
-          Bekijk je intake geschiedenis en statistieken
+          Zoek en beheer je dagelijkse groente en fruit intake
         </p>
       </div>
 
-      {/* Weekly summary */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-        <Card>
-          <CardHeader>
-            <CardTitle className="text-base">Deze Week</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="flex items-baseline gap-2">
-              <span className="text-3xl font-bold text-emerald-700">
-                {weeklyStats.unique}
-              </span>
-              <span className="text-sm text-gray-600">unieke items</span>
-            </div>
-          </CardContent>
-        </Card>
+      {/* Success notification */}
+      {showSuccess && (
+        <div className="mb-4 p-4 bg-emerald-100 border border-emerald-500 rounded-lg text-emerald-800">
+          ✅ <strong>{lastAddedItem}</strong> toegevoegd aan vandaag!
+        </div>
+      )}
 
-        <Card>
-          <CardHeader>
-            <CardTitle className="text-base">Totaal Deze Week</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="flex items-baseline gap-2">
-              <span className="text-3xl font-bold text-gray-700">
-                {weeklyStats.total}
-              </span>
-              <span className="text-sm text-gray-600">items</span>
-            </div>
-          </CardContent>
-        </Card>
-
-        <Card>
-          <CardHeader>
-            <CardTitle className="text-base">Weekdoel</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="flex items-baseline gap-2">
-              <span className="text-3xl font-bold text-emerald-700">
-                {Math.min(100, Math.round((weeklyStats.unique / 25) * 100))}%
-              </span>
-              <span className="text-sm text-gray-600">van 25</span>
-            </div>
-          </CardContent>
-        </Card>
-      </div>
-
-      {/* Calendar view */}
-      <Card>
+      {/* Search section */}
+      <Card className="mb-6">
         <CardHeader>
-          <CardTitle>Dagelijkse Intake</CardTitle>
+          <CardTitle>Voeg toe aan vandaag</CardTitle>
           <CardDescription>
-            Klik op een dag om details te zien en items te verwijderen
+            Zoek groente of fruit en voeg toe aan je intake
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <IntakeCalendar
-            dailySummaries={dailySummaries}
-            onRemoveItem={handleRemoveItem}
+          <FoodSearch
+            foodItems={foodItems}
+            onAdd={handleAddItem}
+            addedItemIds={todayItemIds}
           />
         </CardContent>
       </Card>
+
+      {/* Daily and Weekly tabs */}
+      <Tabs defaultValue="daily" className="w-full">
+        <TabsList className="grid w-full grid-cols-2 mb-6">
+          <TabsTrigger value="daily">Vandaag</TabsTrigger>
+          <TabsTrigger value="weekly">Deze Week</TabsTrigger>
+        </TabsList>
+
+        <TabsContent value="daily">
+          <Card>
+            <CardHeader>
+              <CardTitle>Vandaag Gegeten</CardTitle>
+              <CardDescription>
+                {formatDisplayDate(today)} • {todaysIntake.length} items
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              {todaysIntake.length > 0 ? (
+                <div className="space-y-2">
+                  {todaysIntake.map((intake) => (
+                    <div
+                      key={intake.id}
+                      className="flex items-center justify-between p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors"
+                    >
+                      <div className="flex items-center gap-3">
+                        <span className="text-2xl">
+                          {intake.food_item?.type === 'fruit' ? '🍎' : '🥦'}
+                        </span>
+                        <div>
+                          <p className="font-medium">{intake.food_item?.name_nl}</p>
+                          <p className="text-sm text-gray-600">
+                            {intake.food_item?.category || 'Geen categorie'}
+                          </p>
+                        </div>
+                      </div>
+                      <Button
+                        variant="ghost"
+                        size="icon"
+                        onClick={() => handleRemoveItem(intake.id)}
+                        className="text-red-600 hover:text-red-700 hover:bg-red-50"
+                      >
+                        <X className="w-4 h-4" />
+                      </Button>
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                <div className="text-center py-8">
+                  <p className="text-gray-500">Nog niets gegeten vandaag</p>
+                  <p className="text-sm text-gray-400 mt-1">
+                    Gebruik de zoekbalk hierboven om items toe te voegen
+                  </p>
+                </div>
+              )}
+            </CardContent>
+          </Card>
+        </TabsContent>
+
+        <TabsContent value="weekly">
+          <Card>
+            <CardHeader>
+              <CardTitle>Deze Week</CardTitle>
+              <CardDescription>
+                Vanaf {formatDisplayDate(formatDate(monday))} • {weeklyUniqueCount} unieke items
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <div className="mb-4 p-4 bg-blue-50 border border-blue-200 rounded-lg">
+                <div className="flex items-center justify-between">
+                  <div>
+                    <p className="font-semibold text-blue-900">Weekdoel: 25 unieke items</p>
+                    <p className="text-sm text-blue-700 mt-1">
+                      {weeklyUniqueCount >= 25
+                        ? '🎉 Doel behaald!'
+                        : `Nog ${25 - weeklyUniqueCount} items te gaan`}
+                    </p>
+                  </div>
+                  <div className="text-3xl font-bold text-blue-900">
+                    {weeklyUniqueCount}/25
+                  </div>
+                </div>
+              </div>
+
+              {weeklyIntake.length > 0 ? (
+                <div className="space-y-2">
+                  {weeklyIntake.map((intake) => (
+                    <div
+                      key={intake.id}
+                      className="flex items-center justify-between p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors"
+                    >
+                      <div className="flex items-center gap-3">
+                        <span className="text-2xl">
+                          {intake.food_item?.type === 'fruit' ? '🍎' : '🥦'}
+                        </span>
+                        <div>
+                          <p className="font-medium">{intake.food_item?.name_nl}</p>
+                          <p className="text-sm text-gray-600">
+                            {formatDisplayDate(intake.intake_date)}
+                          </p>
+                        </div>
+                      </div>
+                      <Button
+                        variant="ghost"
+                        size="icon"
+                        onClick={() => handleRemoveItem(intake.id)}
+                        className="text-red-600 hover:text-red-700 hover:bg-red-50"
+                      >
+                        <X className="w-4 h-4" />
+                      </Button>
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                <div className="text-center py-8">
+                  <p className="text-gray-500">Nog geen intake deze week</p>
+                  <p className="text-sm text-gray-400 mt-1">
+                    Begin vandaag met het toevoegen van items
+                  </p>
+                </div>
+              )}
+            </CardContent>
+          </Card>
+        </TabsContent>
+      </Tabs>
     </div>
   );
 }
