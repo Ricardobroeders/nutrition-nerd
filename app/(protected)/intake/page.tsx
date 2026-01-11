@@ -38,6 +38,7 @@ export default function IntakePage() {
   const [loading, setLoading] = useState(true);
   const [showSuccess, setShowSuccess] = useState(false);
   const [lastAddedItem, setLastAddedItem] = useState<string>('');
+  const [activeTab, setActiveTab] = useState('daily');
 
   const today = formatDate(new Date());
   const monday = getMonday(new Date());
@@ -167,7 +168,7 @@ export default function IntakePage() {
       </Card>
 
       {/* Daily and Weekly tabs */}
-      <Tabs defaultValue="daily" className="w-full">
+      <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
         <TabsList className="grid w-full grid-cols-2 mb-6">
           <TabsTrigger value="daily">Vandaag</TabsTrigger>
           <TabsTrigger value="weekly">Deze Week</TabsTrigger>
