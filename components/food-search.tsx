@@ -81,48 +81,58 @@ export function FoodSearch({
       )}
 
       {/* Results */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
-        {filteredItems.map((item) => (
-          <Card
-            key={item.id}
-            className={isAdded(item.id) ? 'border-emerald-500 bg-emerald-50' : ''}
-          >
-            <CardContent className="p-4">
-              <div className="flex items-center justify-between">
-                <div className="flex-1">
-                  <h3 className="font-medium">{item.name_nl}</h3>
-                  <div className="flex gap-2 mt-1">
-                    <Badge variant="outline" className="text-xs">
-                      {item.type === 'fruit' ? '🍎 Fruit' : '🥦 Groente'}
-                    </Badge>
-                    <Badge variant="secondary" className="text-xs">
-                      {item.category}
-                    </Badge>
-                  </div>
-                </div>
-                <Button
-                  size="icon"
-                  onClick={() => onAdd(item)}
-                  disabled={isAdded(item.id)}
-                  className={
-                    isAdded(item.id)
-                      ? 'bg-emerald-600'
-                      : 'bg-emerald-600 hover:bg-emerald-700'
-                  }
-                >
-                  {isAdded(item.id) ? '✓' : <Plus className="w-4 h-4" />}
-                </Button>
-              </div>
-            </CardContent>
-          </Card>
-        ))}
-      </div>
-
-      {filteredItems.length === 0 && (
-        <div className="text-center py-8 text-gray-500">
-          <p>Geen resultaten gevonden</p>
-          <p className="text-sm mt-1">Probeer een andere zoekopdracht</p>
+      {searchQuery.length === 0 ? (
+        <div className="text-center py-12 text-gray-500">
+          <Search className="w-12 h-12 mx-auto mb-3 text-gray-400" />
+          <p className="font-medium">Begin met typen om te zoeken</p>
+          <p className="text-sm mt-1">Zoek naar groente of fruit om toe te voegen</p>
         </div>
+      ) : (
+        <>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+            {filteredItems.map((item) => (
+              <Card
+                key={item.id}
+                className={isAdded(item.id) ? 'border-emerald-500 bg-emerald-50' : ''}
+              >
+                <CardContent className="p-4">
+                  <div className="flex items-center justify-between">
+                    <div className="flex-1">
+                      <h3 className="font-medium">{item.name_nl}</h3>
+                      <div className="flex gap-2 mt-1">
+                        <Badge variant="outline" className="text-xs">
+                          {item.type === 'fruit' ? '🍎 Fruit' : '🥦 Groente'}
+                        </Badge>
+                        <Badge variant="secondary" className="text-xs">
+                          {item.category}
+                        </Badge>
+                      </div>
+                    </div>
+                    <Button
+                      size="icon"
+                      onClick={() => onAdd(item)}
+                      disabled={isAdded(item.id)}
+                      className={
+                        isAdded(item.id)
+                          ? 'bg-emerald-600'
+                          : 'bg-emerald-600 hover:bg-emerald-700'
+                      }
+                    >
+                      {isAdded(item.id) ? '✓' : <Plus className="w-4 h-4" />}
+                    </Button>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+
+          {filteredItems.length === 0 && (
+            <div className="text-center py-8 text-gray-500">
+              <p>Geen resultaten gevonden</p>
+              <p className="text-sm mt-1">Probeer een andere zoekopdracht</p>
+            </div>
+          )}
+        </>
       )}
     </div>
   );

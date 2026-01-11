@@ -4,10 +4,11 @@ import { useState, useMemo, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import { Badge } from '@/components/ui/badge';
-import { LogOut } from 'lucide-react';
-import { getCurrentUser, getUserProfile, getUserIntake, signOut } from '@/lib/supabase';
+import { LogOut, Pencil, Check, X } from 'lucide-react';
+import { getCurrentUser, getUserProfile, getUserIntake, signOut, updateUserDisplayName } from '@/lib/supabase';
 
 export default function ProfielPage() {
   const router = useRouter();
@@ -15,6 +16,9 @@ export default function ProfielPage() {
   const [userProfile, setUserProfile] = useState<any>(null);
   const [intakeData, setIntakeData] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
+  const [isEditingName, setIsEditingName] = useState(false);
+  const [newDisplayName, setNewDisplayName] = useState('');
+  const [savingName, setSavingName] = useState(false);
 
   useEffect(() => {
     async function loadData() {
@@ -75,6 +79,31 @@ export default function ProfielPage() {
     router.push('/login');
   };
 
+  const handleEditName = () => {
+    setNewDisplayName(userProfile?.display_name || '');
+    setIsEditingName(true);
+  };
+
+  const handleCancelEdit = () => {
+    setIsEditingName(false);
+    setNewDisplayName('');
+  };
+
+  const handleSaveName = async () => {
+    if (!user || !newDisplayName.trim()) return;
+
+    setSavingName(true);
+    const { data, error } = await updateUserDisplayName(user.id, newDisplayName.trim());
+
+    if (error) {
+      console.error('Error updating display name:', error);
+    } else if (data) {
+      setUserProfile(data);
+      setIsEditingName(false);
+    }
+    setSavingName(false);
+  };
+
   const getInitials = (name: string) => {
     return name
       .split(' ')
@@ -121,7 +150,49 @@ export default function ProfielPage() {
                 <label className="text-sm text-gray-600 mb-1 block">
                   Weergavenaam
                 </label>
-                <span className="text-lg font-medium">{userProfile?.display_name || 'Nutrition Nerd User'}</span>
+                {isEditingName ? (
+                  <div className="flex gap-2 items-center">
+                    <Input
+                      type="text"
+                      value={newDisplayName}
+                      onChange={(e) => setNewDisplayName(e.target.value)}
+                      placeholder="Voer je naam in"
+                      className="max-w-xs"
+                      disabled={savingName}
+                    />
+                    <Button
+                      size="icon"
+                      variant="default"
+                      onClick={handleSaveName}
+                      disabled={savingName || !newDisplayName.trim()}
+                      className="bg-emerald-600 hover:bg-emerald-700"
+                    >
+                      <Check className="w-4 h-4" />
+                    </Button>
+                    <Button
+                      size="icon"
+                      variant="outline"
+                      onClick={handleCancelEdit}
+                      disabled={savingName}
+                    >
+                      <X className="w-4 h-4" />
+                    </Button>
+                  </div>
+                ) : (
+                  <div className="flex items-center gap-2">
+                    <span className="text-lg font-medium">
+                      {userProfile?.display_name || 'Nutrition Nerd User'}
+                    </span>
+                    <Button
+                      size="icon"
+                      variant="ghost"
+                      onClick={handleEditName}
+                      className="h-8 w-8"
+                    >
+                      <Pencil className="w-4 h-4" />
+                    </Button>
+                  </div>
+                )}
               </div>
 
               <div className="mb-2">

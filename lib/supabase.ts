@@ -198,6 +198,24 @@ export async function updateUserStreak(
   return { data, error: null };
 }
 
+// Helper function to update user display name
+export async function updateUserDisplayName(userId: string, displayName: string) {
+  const { data, error } = await supabase
+    .from('users')
+    .update({
+      display_name: displayName,
+    })
+    .eq('id', userId)
+    .select()
+    .single();
+
+  if (error) {
+    console.error('Error updating display name:', error);
+    return { data: null, error };
+  }
+  return { data, error: null };
+}
+
 // Helper function to get all-time leaderboard (total unique items)
 export async function getAllTimeLeaderboard() {
   const { data, error } = await supabase
