@@ -1,41 +1,93 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { FoodSearch } from '@/components/food-search';
-import { mockFoodItems, generateMockIntake, formatDate } from '@/lib/mock-data';
+import { getCurrentUser, getFoodItems, getUserIntake, addIntake } from '@/lib/supabase';
 import { FoodItem, UserIntake } from '@/types';
+import { useRouter } from 'next/navigation';
+
+function formatDate(date: Date): string {
+  return date.toISOString().split('T')[0];
+}
 
 export default function ZoekenPage() {
-  const [intakeData, setIntakeData] = useState<UserIntake[]>(generateMockIntake());
+  const router = useRouter();
+  const [user, setUser] = useState<any>(null);
+  const [foodItems, setFoodItems] = useState<FoodItem[]>([]);
+  const [intakeData, setIntakeData] = useState<UserIntake[]>([]);
   const [showSuccess, setShowSuccess] = useState(false);
   const [lastAddedItem, setLastAddedItem] = useState<string>('');
+  const [loading, setLoading] = useState(true);
 
   const today = formatDate(new Date());
+
+  useEffect(() => {
+    async function loadData() {
+      try {
+        const currentUser = await getCurrentUser();
+        if (!currentUser) {
+          router.push('/login');
+          return;
+        }
+
+        setUser(currentUser);
+
+        const items = await getFoodItems();
+        setFoodItems(items);
+
+        const intake = await getUserIntake(currentUser.id);
+        setIntakeData(intake as UserIntake[]);
+      } catch (error) {
+        console.error('Error loading data:', error);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    loadData();
+  }, [router]);
+
   const todaysIntake = intakeData.filter((i) => i.intake_date === today);
   const todayItemIds = todaysIntake.map((i) => i.food_item_id);
 
-  const handleAddItem = (item: FoodItem) => {
+  const handleAddItem = async (item: FoodItem) => {
+    if (!user) return;
+
     // Check if already added today
     const alreadyAdded = todaysIntake.some((i) => i.food_item_id === item.id);
     if (alreadyAdded) return;
 
-    const newIntake: UserIntake = {
-      id: `intake-${Date.now()}`,
-      user_id: 'user-1',
-      food_item_id: item.id,
-      intake_date: today,
-      created_at: new Date().toISOString(),
-      food_item: item,
-    };
+    const { data, error } = await addIntake(user.id, item.id, today);
 
-    setIntakeData([...intakeData, newIntake]);
-    setLastAddedItem(item.name_nl);
-    setShowSuccess(true);
+    if (error) {
+      console.error('Error adding intake:', error);
+      return;
+    }
 
-    // Hide success message after 2 seconds
-    setTimeout(() => setShowSuccess(false), 2000);
+    if (data) {
+      const newIntake: UserIntake = {
+        ...data,
+        food_item: item,
+      };
+      setIntakeData([...intakeData, newIntake]);
+      setLastAddedItem(item.name_nl);
+      setShowSuccess(true);
+
+      // Hide success message after 2 seconds
+      setTimeout(() => setShowSuccess(false), 2000);
+    }
   };
+
+  if (loading) {
+    return (
+      <div className="container mx-auto px-4 py-6 max-w-6xl">
+        <div className="text-center py-12">
+          <p className="text-gray-600">Laden...</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="container mx-auto px-4 py-6 max-w-6xl">
@@ -82,7 +134,7 @@ export default function ZoekenPage() {
         </CardHeader>
         <CardContent>
           <FoodSearch
-            foodItems={mockFoodItems}
+            foodItems={foodItems}
             onAdd={handleAddItem}
             addedItemIds={todayItemIds}
           />

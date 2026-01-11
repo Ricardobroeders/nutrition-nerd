@@ -1,19 +1,65 @@
 'use client';
 
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Progress } from '@/components/ui/progress';
 import { StreakIndicator } from '@/components/streak-indicator';
 import { FoodSearch } from '@/components/food-search';
-import { mockCurrentUser, mockFoodItems, generateMockIntake, getMonday, formatDate } from '@/lib/mock-data';
+import { supabase, getCurrentUser, getUserProfile, getFoodItems, getUserIntake, addIntake } from '@/lib/supabase';
 import { FoodItem, UserIntake } from '@/types';
+import { useRouter } from 'next/navigation';
+
+function getMonday(date: Date): Date {
+  const d = new Date(date);
+  const day = d.getDay();
+  const diff = d.getDate() - day + (day === 0 ? -6 : 1);
+  return new Date(d.setDate(diff));
+}
+
+function formatDate(date: Date): string {
+  return date.toISOString().split('T')[0];
+}
 
 export default function DashboardPage() {
-  const [intakeData, setIntakeData] = useState<UserIntake[]>(generateMockIntake());
+  const router = useRouter();
+  const [user, setUser] = useState<any>(null);
+  const [userProfile, setUserProfile] = useState<any>(null);
+  const [foodItems, setFoodItems] = useState<FoodItem[]>([]);
+  const [intakeData, setIntakeData] = useState<UserIntake[]>([]);
+  const [loading, setLoading] = useState(true);
 
   const today = formatDate(new Date());
   const monday = getMonday(new Date());
   const weekStart = formatDate(monday);
+
+  useEffect(() => {
+    async function loadData() {
+      try {
+        const currentUser = await getCurrentUser();
+        if (!currentUser) {
+          router.push('/login');
+          return;
+        }
+
+        setUser(currentUser);
+
+        const profile = await getUserProfile(currentUser.id);
+        setUserProfile(profile);
+
+        const items = await getFoodItems();
+        setFoodItems(items);
+
+        const intake = await getUserIntake(currentUser.id);
+        setIntakeData(intake as UserIntake[]);
+      } catch (error) {
+        console.error('Error loading data:', error);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    loadData();
+  }, [router]);
 
   // Calculate today's intake
   const todaysIntake = useMemo(() => {
@@ -30,32 +76,48 @@ export default function DashboardPage() {
     return uniqueIds.size;
   }, [intakeData, monday]);
 
-  const handleAddItem = (item: FoodItem) => {
+  const handleAddItem = async (item: FoodItem) => {
+    if (!user) return;
+
     // Check if already added today
     const alreadyAdded = todaysIntake.some((i) => i.food_item_id === item.id);
     if (alreadyAdded) return;
 
-    const newIntake: UserIntake = {
-      id: `intake-${Date.now()}`,
-      user_id: mockCurrentUser.id,
-      food_item_id: item.id,
-      intake_date: today,
-      created_at: new Date().toISOString(),
-      food_item: item,
-    };
+    const { data, error } = await addIntake(user.id, item.id, today);
 
-    setIntakeData([...intakeData, newIntake]);
+    if (error) {
+      console.error('Error adding intake:', error);
+      return;
+    }
+
+    if (data) {
+      const newIntake: UserIntake = {
+        ...data,
+        food_item: item,
+      };
+      setIntakeData([...intakeData, newIntake]);
+    }
   };
 
   const todayItemIds = todaysIntake.map((i) => i.food_item_id);
   const weeklyProgress = (weeklyUniqueCount / 25) * 100;
+
+  if (loading) {
+    return (
+      <div className="container mx-auto px-4 py-6 max-w-6xl">
+        <div className="text-center py-12">
+          <p className="text-gray-600">Laden...</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="container mx-auto px-4 py-6 max-w-6xl">
       {/* Welcome section */}
       <div className="mb-6">
         <h1 className="text-2xl md:text-3xl font-bold text-gray-900">
-          Welkom terug, {mockCurrentUser.display_name}! 👋
+          Welkom terug, {userProfile?.display_name || user?.email}! 👋
         </h1>
         <p className="text-gray-600 mt-1">
           Vandaag heb je {todaysIntake.length} items gegeten
@@ -66,8 +128,8 @@ export default function DashboardPage() {
         {/* Streak indicator */}
         <div className="lg:col-span-2">
           <StreakIndicator
-            currentStreak={mockCurrentUser.current_streak}
-            longestStreak={mockCurrentUser.longest_streak}
+            currentStreak={userProfile?.current_streak || 0}
+            longestStreak={userProfile?.longest_streak || 0}
             weeklyProgress={weeklyUniqueCount}
             weeklyGoal={25}
           />
@@ -136,7 +198,7 @@ export default function DashboardPage() {
         </CardHeader>
         <CardContent>
           <FoodSearch
-            foodItems={mockFoodItems}
+            foodItems={foodItems}
             onAdd={handleAddItem}
             addedItemIds={todayItemIds}
           />

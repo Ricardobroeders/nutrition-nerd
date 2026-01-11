@@ -1,21 +1,46 @@
 'use client';
 
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import { Badge } from '@/components/ui/badge';
-import { LogOut, Edit2, Check, X } from 'lucide-react';
-import { mockCurrentUser, generateMockIntake } from '@/lib/mock-data';
+import { LogOut } from 'lucide-react';
+import { getCurrentUser, getUserProfile, getUserIntake, signOut } from '@/lib/supabase';
 
 export default function ProfielPage() {
   const router = useRouter();
-  const [isEditing, setIsEditing] = useState(false);
-  const [displayName, setDisplayName] = useState(mockCurrentUser.display_name);
-  const [tempDisplayName, setTempDisplayName] = useState(mockCurrentUser.display_name);
-  const [intakeData] = useState(generateMockIntake());
+  const [user, setUser] = useState<any>(null);
+  const [userProfile, setUserProfile] = useState<any>(null);
+  const [intakeData, setIntakeData] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function loadData() {
+      try {
+        const currentUser = await getCurrentUser();
+        if (!currentUser) {
+          router.push('/login');
+          return;
+        }
+
+        setUser(currentUser);
+
+        const profile = await getUserProfile(currentUser.id);
+        setUserProfile(profile);
+
+        const intake = await getUserIntake(currentUser.id);
+        setIntakeData(intake);
+      } catch (error) {
+        console.error('Error loading data:', error);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    loadData();
+  }, [router]);
 
   const stats = useMemo(() => {
     const allUniqueItems = new Set(intakeData.map((i) => i.food_item_id));
@@ -33,7 +58,7 @@ export default function ProfielPage() {
       (i) => i.food_item?.type === 'fruit'
     ).length;
     const vegetableCount = intakeData.filter(
-      (i) => i.food_item?.type === 'vegetable'
+      (i) => i.food_item?.type === 'groente'
     ).length;
 
     return {
@@ -45,17 +70,8 @@ export default function ProfielPage() {
     };
   }, [intakeData]);
 
-  const handleSave = () => {
-    setDisplayName(tempDisplayName);
-    setIsEditing(false);
-  };
-
-  const handleCancel = () => {
-    setTempDisplayName(displayName);
-    setIsEditing(false);
-  };
-
-  const handleLogout = () => {
+  const handleLogout = async () => {
+    await signOut();
     router.push('/login');
   };
 
@@ -67,6 +83,16 @@ export default function ProfielPage() {
       .toUpperCase()
       .slice(0, 2);
   };
+
+  if (loading) {
+    return (
+      <div className="container mx-auto px-4 py-6 max-w-4xl">
+        <div className="text-center py-12">
+          <p className="text-gray-600">Laden...</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="container mx-auto px-4 py-6 max-w-4xl">
@@ -86,7 +112,7 @@ export default function ProfielPage() {
           <div className="flex items-start gap-6">
             <Avatar className="w-20 h-20">
               <AvatarFallback className="bg-emerald-600 text-white text-2xl font-bold">
-                {getInitials(displayName)}
+                {getInitials(userProfile?.display_name || user?.email || 'NN')}
               </AvatarFallback>
             </Avatar>
 
@@ -95,47 +121,18 @@ export default function ProfielPage() {
                 <label className="text-sm text-gray-600 mb-1 block">
                   Weergavenaam
                 </label>
-                {isEditing ? (
-                  <div className="flex gap-2">
-                    <Input
-                      value={tempDisplayName}
-                      onChange={(e) => setTempDisplayName(e.target.value)}
-                      className="max-w-xs"
-                    />
-                    <Button
-                      size="icon"
-                      onClick={handleSave}
-                      className="bg-emerald-600 hover:bg-emerald-700"
-                    >
-                      <Check className="w-4 h-4" />
-                    </Button>
-                    <Button size="icon" variant="outline" onClick={handleCancel}>
-                      <X className="w-4 h-4" />
-                    </Button>
-                  </div>
-                ) : (
-                  <div className="flex items-center gap-2">
-                    <span className="text-lg font-medium">{displayName}</span>
-                    <Button
-                      size="icon"
-                      variant="ghost"
-                      onClick={() => setIsEditing(true)}
-                    >
-                      <Edit2 className="w-4 h-4" />
-                    </Button>
-                  </div>
-                )}
+                <span className="text-lg font-medium">{userProfile?.display_name || 'Nutrition Nerd User'}</span>
               </div>
 
               <div className="mb-2">
                 <label className="text-sm text-gray-600">Email</label>
-                <p className="text-gray-900">{mockCurrentUser.email}</p>
+                <p className="text-gray-900">{userProfile?.email || user?.email}</p>
               </div>
 
               <div>
                 <label className="text-sm text-gray-600">Lid sinds</label>
                 <p className="text-gray-900">
-                  {new Date(mockCurrentUser.created_at).toLocaleDateString('nl-NL', {
+                  {new Date(userProfile?.created_at || Date.now()).toLocaleDateString('nl-NL', {
                     day: 'numeric',
                     month: 'long',
                     year: 'numeric',
@@ -158,20 +155,20 @@ export default function ProfielPage() {
             <div className="text-center p-4 bg-emerald-50 rounded-lg">
               <div className="flex items-center justify-center gap-2 mb-1">
                 <span className="text-4xl font-bold text-emerald-700">
-                  {mockCurrentUser.current_streak}
+                  {userProfile?.current_streak || 0}
                 </span>
                 <span className="text-3xl">🔥</span>
               </div>
               <p className="text-sm text-gray-600">Huidige Streak</p>
               <Badge className="mt-2 bg-emerald-600">
-                {mockCurrentUser.current_streak > 0 ? 'Actief' : 'Start vandaag!'}
+                {(userProfile?.current_streak || 0) > 0 ? 'Actief' : 'Start vandaag!'}
               </Badge>
             </div>
 
             <div className="text-center p-4 bg-yellow-50 rounded-lg">
               <div className="flex items-center justify-center gap-2 mb-1">
                 <span className="text-4xl font-bold text-yellow-700">
-                  {mockCurrentUser.longest_streak}
+                  {userProfile?.longest_streak || 0}
                 </span>
                 <span className="text-3xl">🏆</span>
               </div>

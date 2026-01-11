@@ -1,13 +1,51 @@
 'use client';
 
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { IntakeCalendar } from '@/components/intake-calendar';
-import { generateMockIntake, getMonday, formatDate } from '@/lib/mock-data';
+import { getCurrentUser, getUserIntake, removeIntake } from '@/lib/supabase';
 import { DailyIntakeSummary, UserIntake } from '@/types';
+import { useRouter } from 'next/navigation';
+
+function getMonday(date: Date): Date {
+  const d = new Date(date);
+  const day = d.getDay();
+  const diff = d.getDate() - day + (day === 0 ? -6 : 1);
+  return new Date(d.setDate(diff));
+}
+
+function formatDate(date: Date): string {
+  return date.toISOString().split('T')[0];
+}
 
 export default function IntakePage() {
-  const [intakeData, setIntakeData] = useState<UserIntake[]>(generateMockIntake());
+  const router = useRouter();
+  const [user, setUser] = useState<any>(null);
+  const [intakeData, setIntakeData] = useState<UserIntake[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function loadData() {
+      try {
+        const currentUser = await getCurrentUser();
+        if (!currentUser) {
+          router.push('/login');
+          return;
+        }
+
+        setUser(currentUser);
+
+        const intake = await getUserIntake(currentUser.id);
+        setIntakeData(intake as UserIntake[]);
+      } catch (error) {
+        console.error('Error loading data:', error);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    loadData();
+  }, [router]);
 
   // Group intake by date
   const dailySummaries = useMemo<DailyIntakeSummary[]>(() => {
@@ -50,13 +88,38 @@ export default function IntakePage() {
     };
   }, [intakeData]);
 
-  const handleRemoveItem = (date: string, itemId: string) => {
+  const handleRemoveItem = async (date: string, itemId: string) => {
+    // Find the intake record to remove
+    const intakeToRemove = intakeData.find(
+      (intake) => intake.intake_date === date && intake.food_item_id === itemId
+    );
+
+    if (!intakeToRemove) return;
+
+    const { error } = await removeIntake(intakeToRemove.id);
+
+    if (error) {
+      console.error('Error removing intake:', error);
+      return;
+    }
+
+    // Update local state
     setIntakeData(
       intakeData.filter(
         (intake) => !(intake.intake_date === date && intake.food_item_id === itemId)
       )
     );
   };
+
+  if (loading) {
+    return (
+      <div className="container mx-auto px-4 py-6 max-w-6xl">
+        <div className="text-center py-12">
+          <p className="text-gray-600">Laden...</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="container mx-auto px-4 py-6 max-w-6xl">
