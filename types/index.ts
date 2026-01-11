@@ -1,4 +1,4 @@
-export type FoodType = 'fruit' | 'vegetable';
+export type FoodType = 'fruit' | 'groente';
 
 export interface User {
   id: string;
@@ -13,7 +13,8 @@ export interface FoodItem {
   id: string;
   name_nl: string;
   type: FoodType;
-  category: string;
+  category: string | null;
+  nutrient?: string | null;
   created_at: string;
 }
 
