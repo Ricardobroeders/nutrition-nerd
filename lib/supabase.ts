@@ -197,3 +197,65 @@ export async function updateUserStreak(
   }
   return { data, error: null };
 }
+
+// Helper function to get all-time leaderboard (total unique items)
+export async function getAllTimeLeaderboard() {
+  const { data, error } = await supabase
+    .from('users')
+    .select(`
+      id,
+      display_name,
+      user_intake(food_item_id)
+    `)
+    .order('display_name', { ascending: true });
+
+  if (error) {
+    console.error('Error getting all-time leaderboard:', error);
+    return [];
+  }
+
+  // Calculate unique items count for each user
+  const leaderboard = data.map(user => {
+    const uniqueItems = new Set(user.user_intake.map(intake => intake.food_item_id));
+    return {
+      id: user.id,
+      display_name: user.display_name,
+      total_unique_items: uniqueItems.size,
+    };
+  });
+
+  // Sort by total unique items descending
+  return leaderboard.sort((a, b) => b.total_unique_items - a.total_unique_items);
+}
+
+// Helper function to get weekly streaks leaderboard
+export async function getWeeklyStreaksLeaderboard() {
+  const { data, error } = await supabase
+    .from('users')
+    .select(`
+      id,
+      display_name,
+      weekly_stats(unique_items_count)
+    `)
+    .order('display_name', { ascending: true });
+
+  if (error) {
+    console.error('Error getting weekly streaks leaderboard:', error);
+    return [];
+  }
+
+  // Count weeks where user achieved 25+ unique items
+  const leaderboard = data.map(user => {
+    const weeksCompleted = user.weekly_stats.filter(
+      week => week.unique_items_count >= 25
+    ).length;
+    return {
+      id: user.id,
+      display_name: user.display_name,
+      weeks_completed: weeksCompleted,
+    };
+  });
+
+  // Sort by weeks completed descending
+  return leaderboard.sort((a, b) => b.weeks_completed - a.weeks_completed);
+}

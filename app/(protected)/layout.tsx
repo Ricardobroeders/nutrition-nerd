@@ -2,12 +2,11 @@
 
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
-import { Home, Search, Calendar, Trophy, User } from 'lucide-react';
+import { Home, Calendar, Trophy, User } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 const navigation = [
   { name: 'Dashboard', href: '/dashboard', icon: Home },
-  { name: 'Zoeken', href: '/zoeken', icon: Search },
   { name: 'Mijn Intake', href: '/intake', icon: Calendar },
   { name: 'Klassement', href: '/klassement', icon: Trophy },
   { name: 'Profiel', href: '/profiel', icon: User },

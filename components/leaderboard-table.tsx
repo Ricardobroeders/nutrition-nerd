@@ -1,14 +1,21 @@
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
-import { LeaderboardEntry } from '@/types';
 import { Trophy, Medal } from 'lucide-react';
+
+export interface LeaderboardEntry {
+  id: string;
+  display_name: string;
+  score: number;
+  is_current_user?: boolean;
+}
 
 interface LeaderboardTableProps {
   entries: LeaderboardEntry[];
+  scoreLabel: string;
 }
 
-export function LeaderboardTable({ entries }: LeaderboardTableProps) {
+export function LeaderboardTable({ entries, scoreLabel }: LeaderboardTableProps) {
   const getRankIcon = (rank: number) => {
     if (rank === 1) return <Trophy className="w-5 h-5 text-yellow-500" />;
     if (rank === 2) return <Medal className="w-5 h-5 text-gray-400" />;
@@ -27,16 +34,16 @@ export function LeaderboardTable({ entries }: LeaderboardTableProps) {
 
   return (
     <div className="space-y-2">
-      {entries.map((entry) => (
+      {entries.map((entry, index) => (
         <Card
-          key={entry.user_id}
+          key={entry.id}
           className={entry.is_current_user ? 'border-emerald-500 bg-emerald-50' : ''}
         >
           <CardContent className="p-4">
             <div className="flex items-center gap-4">
               {/* Rank */}
               <div className="flex items-center justify-center w-10">
-                {getRankIcon(entry.rank)}
+                {getRankIcon(index + 1)}
               </div>
 
               {/* Avatar */}
@@ -61,9 +68,9 @@ export function LeaderboardTable({ entries }: LeaderboardTableProps) {
               {/* Score */}
               <div className="text-right">
                 <div className="text-xl font-bold text-emerald-700">
-                  {entry.unique_items_count}
+                  {entry.score}
                 </div>
-                <div className="text-xs text-gray-500">uniek</div>
+                <div className="text-xs text-gray-500">{scoreLabel}</div>
               </div>
             </div>
           </CardContent>
