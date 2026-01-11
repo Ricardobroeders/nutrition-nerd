@@ -70,10 +70,10 @@ export function FoodSearch({
             🍎 Fruit
           </Button>
           <Button
-            variant={typeFilter === 'vegetable' ? 'default' : 'outline'}
+            variant={typeFilter === 'groente' ? 'default' : 'outline'}
             size="sm"
-            onClick={() => setTypeFilter('vegetable')}
-            className={typeFilter === 'vegetable' ? 'bg-emerald-600 hover:bg-emerald-700' : ''}
+            onClick={() => setTypeFilter('groente')}
+            className={typeFilter === 'groente' ? 'bg-emerald-600 hover:bg-emerald-700' : ''}
           >
             🥦 Groente
           </Button>
