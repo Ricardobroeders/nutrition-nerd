@@ -2,8 +2,11 @@ import { createClient } from '@supabase/supabase-js';
 import * as fs from 'fs';
 import * as path from 'path';
 import { parse } from 'csv-parse/sync';
+import { config } from 'dotenv';
 
-// Load environment variables
+// Load environment variables from .env.local
+config({ path: path.join(process.cwd(), '.env.local') });
+
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
 const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY; // Use service role key for admin operations
 
