@@ -66,12 +66,17 @@ export default function DashboardPage() {
 
   // Calculate this week's unique items
   const weeklyUniqueCount = useMemo(() => {
+    // Calculate end of week (next Monday)
+    const nextMonday = new Date(monday);
+    nextMonday.setDate(nextMonday.getDate() + 7);
+    const weekEnd = formatDate(nextMonday);
+
     const weekIntake = intakeData.filter((i) => {
-      return i.intake_date >= weekStart;
+      return i.intake_date >= weekStart && i.intake_date < weekEnd;
     });
     const uniqueIds = new Set(weekIntake.map((i) => i.food_item_id));
     return uniqueIds.size;
-  }, [intakeData, weekStart]);
+  }, [intakeData, weekStart, monday]);
   const weeklyProgress = (weeklyUniqueCount / 30) * 100;
 
   if (loading) {
