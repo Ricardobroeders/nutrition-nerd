@@ -246,6 +246,56 @@ export async function getAllTimeLeaderboard() {
   return leaderboard.sort((a, b) => b.total_unique_items - a.total_unique_items);
 }
 
+// Helper function to get average weekly items leaderboard
+export async function getAverageWeeklyLeaderboard() {
+  const { data, error } = await supabase
+    .from('users')
+    .select(`
+      id,
+      display_name,
+      weekly_stats(unique_items_count, week_start_date)
+    `)
+    .order('display_name', { ascending: true });
+
+  if (error) {
+    console.error('Error getting average weekly leaderboard:', error);
+    return [];
+  }
+
+  // Get current week's Monday to exclude it from average calculation
+  const now = new Date();
+  now.setHours(0, 0, 0, 0);
+  const currentDay = now.getDay();
+  const daysToSubtract = currentDay === 0 ? 6 : currentDay - 1;
+  const currentMonday = new Date(now);
+  currentMonday.setDate(currentMonday.getDate() - daysToSubtract);
+
+  const year = currentMonday.getFullYear();
+  const month = String(currentMonday.getMonth() + 1).padStart(2, '0');
+  const day = String(currentMonday.getDate()).padStart(2, '0');
+  const currentWeekStart = `${year}-${month}-${day}`;
+
+  // Calculate average unique items per week for each user (excluding current week)
+  const leaderboard = data.map(user => {
+    // Filter out the current week
+    const completedWeeks = user.weekly_stats.filter(
+      week => week.week_start_date !== currentWeekStart
+    );
+
+    const totalItems = completedWeeks.reduce((sum, week) => sum + week.unique_items_count, 0);
+    const average = completedWeeks.length > 0 ? totalItems / completedWeeks.length : 0;
+    return {
+      id: user.id,
+      display_name: user.display_name,
+      average_weekly_items: parseFloat(average.toFixed(2)),
+      weeks_tracked: completedWeeks.length,
+    };
+  });
+
+  // Sort by average descending
+  return leaderboard.sort((a, b) => b.average_weekly_items - a.average_weekly_items);
+}
+
 // Helper function to get weekly streaks leaderboard
 export async function getWeeklyStreaksLeaderboard() {
   const { data, error } = await supabase

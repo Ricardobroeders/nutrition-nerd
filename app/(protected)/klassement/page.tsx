@@ -2,8 +2,9 @@
 
 import { useState, useEffect } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { LeaderboardTable, LeaderboardEntry } from '@/components/leaderboard-table';
-import { getAllTimeLeaderboard, getWeeklyStreaksLeaderboard, getCurrentUser } from '@/lib/supabase';
+import { getAllTimeLeaderboard, getAverageWeeklyLeaderboard, getWeeklyStreaksLeaderboard, getCurrentUser } from '@/lib/supabase';
 import { useRouter } from 'next/navigation';
 
 export default function KlassementPage() {
@@ -11,6 +12,7 @@ export default function KlassementPage() {
   const [loading, setLoading] = useState(true);
   const [currentUserId, setCurrentUserId] = useState<string | null>(null);
   const [allTimeLeaderboard, setAllTimeLeaderboard] = useState<LeaderboardEntry[]>([]);
+  const [averageWeeklyLeaderboard, setAverageWeeklyLeaderboard] = useState<LeaderboardEntry[]>([]);
   const [weeklyStreaksLeaderboard, setWeeklyStreaksLeaderboard] = useState<LeaderboardEntry[]>([]);
 
   useEffect(() => {
@@ -33,6 +35,16 @@ export default function KlassementPage() {
           is_current_user: user.id === currentUser.id,
         }));
         setAllTimeLeaderboard(allTimeEntries);
+
+        // Load average weekly leaderboard
+        const averageWeeklyData = await getAverageWeeklyLeaderboard();
+        const averageWeeklyEntries: LeaderboardEntry[] = averageWeeklyData.map(user => ({
+          id: user.id,
+          display_name: user.display_name,
+          score: user.average_weekly_items,
+          is_current_user: user.id === currentUser.id,
+        }));
+        setAverageWeeklyLeaderboard(averageWeeklyEntries);
 
         // Load weekly streaks leaderboard
         const weeklyStreaksData = await getWeeklyStreaksLeaderboard();
@@ -67,43 +79,68 @@ export default function KlassementPage() {
     <div className="container mx-auto px-4 py-6 max-w-6xl">
       <div className="mb-6">
         <h1 className="text-2xl md:text-3xl font-bold text-gray-900">
-          Klassement 🏆
+          Leaderboard 🏆
         </h1>
         <p className="text-gray-600 mt-1">
           Zie hoe je het doet ten opzichte van anderen
         </p>
       </div>
 
-      {/* All-time leaderboard */}
-      <Card className="mb-6">
-        <CardHeader>
-          <CardTitle>Totaal Unieke Items (All-Time)</CardTitle>
-          <CardDescription>
-            Het totaal aantal verschillende groenten en fruit die je ooit hebt gegeten
-          </CardDescription>
-        </CardHeader>
-        <CardContent>
-          <LeaderboardTable entries={allTimeLeaderboard} scoreLabel="totaal uniek" />
-        </CardContent>
-      </Card>
+      {/* Leaderboards in accordion */}
+      <Accordion type="single" collapsible className="w-full space-y-4 mb-6">
+        {/* All-time leaderboard */}
+        <Card>
+          <AccordionItem value="all-time" className="border-0">
+            <CardHeader className="p-4">
+              <AccordionTrigger className="hover:no-underline py-2">
+                <CardTitle>Totaal Unieke Items</CardTitle>
+              </AccordionTrigger>
+            </CardHeader>
+            <AccordionContent>
+              <CardContent className="p-4">
+                <LeaderboardTable entries={allTimeLeaderboard} scoreLabel="totaal uniek" />
+              </CardContent>
+            </AccordionContent>
+          </AccordionItem>
+        </Card>
 
-      {/* Weekly streaks leaderboard */}
-      <Card className="mb-6">
-        <CardHeader>
-          <CardTitle>Wekelijkse Streaks</CardTitle>
-          <CardDescription>
-            Aantal keer dat het weekdoel van 30 unieke items behaald is
-          </CardDescription>
-        </CardHeader>
-        <CardContent>
-          <LeaderboardTable entries={weeklyStreaksLeaderboard} scoreLabel="weken behaald" />
-        </CardContent>
-      </Card>
+        {/* Average weekly leaderboard */}
+        <Card>
+          <AccordionItem value="average-weekly" className="border-0">
+            <CardHeader className="p-4">
+              <AccordionTrigger className="hover:no-underline py-2">
+                <CardTitle>Gemiddelde Per Week</CardTitle>
+              </AccordionTrigger>
+            </CardHeader>
+            <AccordionContent>
+              <CardContent className="p-4">
+                <LeaderboardTable entries={averageWeeklyLeaderboard} scoreLabel="gemiddeld" />
+              </CardContent>
+            </AccordionContent>
+          </AccordionItem>
+        </Card>
+
+        {/* Weekly streaks leaderboard */}
+        <Card>
+          <AccordionItem value="weekly-streaks" className="border-0">
+            <CardHeader className="p-4">
+              <AccordionTrigger className="hover:no-underline py-2">
+                <CardTitle>Wekelijkse Streaks</CardTitle>
+              </AccordionTrigger>
+            </CardHeader>
+            <AccordionContent>
+              <CardContent className="p-4">
+                <LeaderboardTable entries={weeklyStreaksLeaderboard} scoreLabel="weken behaald" />
+              </CardContent>
+            </AccordionContent>
+          </AccordionItem>
+        </Card>
+      </Accordion>
 
       {/* Info section */}
       <Card>
         <CardHeader>
-          <CardTitle className="text-lg">Hoe werkt het klassement?</CardTitle>
+          <CardTitle className="text-lg">Hoe werkt de leaderboard?</CardTitle>
         </CardHeader>
         <CardContent className="space-y-3 text-sm text-gray-700">
           <div className="flex gap-3">

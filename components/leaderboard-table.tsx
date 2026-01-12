@@ -39,15 +39,15 @@ export function LeaderboardTable({ entries, scoreLabel }: LeaderboardTableProps)
           key={entry.id}
           className={entry.is_current_user ? 'border-emerald-500 bg-emerald-50' : ''}
         >
-          <CardContent className="p-4">
-            <div className="flex items-center gap-4">
+          <CardContent className="p-2">
+            <div className="flex items-center gap-2">
               {/* Rank */}
               <div className="flex items-center justify-center w-10">
                 {getRankIcon(index + 1)}
               </div>
 
               {/* Avatar */}
-              <Avatar className="w-10 h-10">
+              <Avatar className="w-8 h-8">
                 <AvatarFallback className="bg-emerald-600 text-white font-semibold">
                   {getInitials(entry.display_name)}
                 </AvatarFallback>
