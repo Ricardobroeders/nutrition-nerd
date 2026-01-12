@@ -15,12 +15,20 @@ function getMonday(date: Date): Date {
   d.setHours(0, 0, 0, 0);
   const day = d.getDay(); // 0 = Sunday, 1 = Monday, ..., 6 = Saturday
 
+  console.log('getMonday() called - NEW VERSION');
+  console.log('Day of week:', day);
+
   // If today is Monday (1), keep it
   // If today is Sunday (0), go back 6 days to previous Monday
   // Otherwise, go back to the most recent Monday
   const daysToSubtract = day === 0 ? 6 : day - 1;
 
+  console.log('Days to subtract:', daysToSubtract);
+
   d.setDate(d.getDate() - daysToSubtract);
+
+  console.log('Calculated Monday:', d.toISOString().split('T')[0]);
+
   return d;
 }
 
@@ -49,6 +57,10 @@ export default function IntakePage() {
 
   const today = formatDate(new Date());
   const monday = getMonday(new Date());
+
+  console.log('=== INTAKE PAGE DEBUG ===');
+  console.log('Today is:', today, 'Day of week:', new Date().getDay());
+  console.log('Monday calculated as:', formatDate(monday));
 
   useEffect(() => {
     async function loadData() {
@@ -89,9 +101,17 @@ export default function IntakePage() {
     nextMonday.setDate(nextMonday.getDate() + 7);
     const weekEndStr = formatDate(nextMonday);
 
-    return intakeData.filter((i) => {
+    console.log('Week filter:', { weekStartStr, weekEndStr });
+    console.log('Total intake records:', intakeData.length);
+
+    const filtered = intakeData.filter((i) => {
       return i.intake_date >= weekStartStr && i.intake_date < weekEndStr;
     });
+
+    console.log('Filtered to', filtered.length, 'records for this week');
+    console.log('Unique items:', new Set(filtered.map(i => i.food_item_id)).size);
+
+    return filtered;
   }, [intakeData, monday]);
 
   const todayItemIds = todaysIntake.map((i) => i.food_item_id);
