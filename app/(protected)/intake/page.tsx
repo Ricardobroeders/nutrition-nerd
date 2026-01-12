@@ -12,13 +12,17 @@ import { X } from 'lucide-react';
 
 function getMonday(date: Date): Date {
   const d = new Date(date);
-  d.setHours(0, 0, 0, 0);
+  // Get the local day of week BEFORE setting time to avoid timezone issues
   const day = d.getDay(); // 0 = Sunday, 1 = Monday, ..., 6 = Saturday
 
-  console.log('getMonday() called - NEW VERSION');
-  console.log('Day of week:', day);
+  // Set to start of day in local time
+  d.setHours(0, 0, 0, 0);
 
-  // If today is Monday (1), keep it
+  console.log('getMonday() called - FIXED VERSION');
+  console.log('Day of week:', day);
+  console.log('Current date:', d.toISOString().split('T')[0]);
+
+  // If today is Monday (1), keep it as-is (subtract 0)
   // If today is Sunday (0), go back 6 days to previous Monday
   // Otherwise, go back to the most recent Monday
   const daysToSubtract = day === 0 ? 6 : day - 1;
@@ -33,7 +37,11 @@ function getMonday(date: Date): Date {
 }
 
 function formatDate(date: Date): string {
-  return date.toISOString().split('T')[0];
+  // Use local date parts instead of toISOString() to avoid timezone issues
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, '0');
+  const day = String(date.getDate()).padStart(2, '0');
+  return `${year}-${month}-${day}`;
 }
 
 function formatDisplayDate(dateStr: string): string {
