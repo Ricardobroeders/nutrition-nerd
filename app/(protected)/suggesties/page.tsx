@@ -76,8 +76,8 @@ export default function SuggestiesPage() {
         body: JSON.stringify({
           productName: productName.trim(),
           productType,
-          productCategory: productCategory && productCategory !== 'none' ? productCategory : 'Geen categorie',
-          userEmail: user?.email || 'Onbekend',
+          productCategory: productCategory && productCategory !== 'none' ? productCategory : null,
+          userId: user?.id,
         }),
       });
 
