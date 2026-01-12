@@ -44,22 +44,46 @@ The table includes:
 
 ### Admin Review Process
 
-You can review suggestions directly in Supabase:
+Use the helper script `supabase/approve_suggestion.sql` for step-by-step guidance:
 
-1. Go to Supabase Dashboard → Table Editor
-2. Open the `product_suggestions` table
-3. View all pending suggestions
-4. For each suggestion you want to approve:
+#### Quick Steps:
+
+1. **View pending suggestions**:
    ```sql
-   -- Option 1: Manually copy the data to food_items table
-   INSERT INTO food_items (name_nl, type, category)
-   VALUES ('Product Name', 'fruit', 'Category Name');
+   SELECT
+     ps.id,
+     ps.product_name,
+     ps.product_type,
+     ps.product_category,
+     u.display_name as suggested_by
+   FROM product_suggestions ps
+   JOIN users u ON ps.suggested_by_user_id = u.id
+   WHERE ps.status = 'pending'
+   ORDER BY ps.created_at DESC;
+   ```
 
-   -- Option 2: Update the suggestion status
+2. **Copy the UUID** from the `id` column (e.g., `a1b2c3d4-e5f6-7890-abcd-ef1234567890`)
+
+3. **Approve and add to food items**:
+   ```sql
+   BEGIN;
+
+   -- Add to food_items
+   INSERT INTO food_items (name_nl, type, category)
+   VALUES ('Mango', 'fruit', NULL);
+
+   -- Mark as approved (REPLACE the UUID!)
    UPDATE product_suggestions
    SET status = 'approved', reviewed_at = NOW()
-   WHERE id = 'suggestion-id-here';
+   WHERE id = 'a1b2c3d4-e5f6-7890-abcd-ef1234567890';
+
+   COMMIT;
    ```
+
+**IMPORTANT**:
+- Always copy the full UUID from the query results
+- Don't use the placeholder text 'suggestion-id'
+- Use NULL (no quotes) if there's no category
 
 ### Viewing Suggestions
 
