@@ -1,0 +1,419 @@
+id,name_nl,type,category,nutrient,created_at
+6f2e5cf1-cac5-49a5-ab2a-bca91a18442d,Aardappel,groente,Knolgewassen,inuline,2026-01-11 20:49:56.626153+00
+8c1f3ea0-bf3f-46f6-8df1-0b773d7eb1aa,Aardbei,fruit,Bessen,vitamine C,2026-01-11 11:57:01.061778+00
+9f5ba72e-fdc0-41cb-b410-d02087ebd853,Aardpeer,groente,Knolgewassen,inuline,2026-01-11 19:46:46.46247+00
+7d669e13-f128-4459-9d9f-7262516483d7,Abrikoos,fruit,Steenvruchten,vitamine A,2026-01-11 11:57:01.061778+00
+906665e2-94ae-4093-9901-89478d1f961f,Acai bes,fruit,Bessen,antioxidanten,2026-01-11 19:46:38.661673+00
+08e14bef-f98f-4ed7-a775-689a26019889,Ackee,fruit,Tropische vruchten,eiwitten,2026-01-11 19:46:41.601757+00
+580ce68e-81c3-48e2-a534-11fbecf42a65,African cucumber,fruit,Exotische vruchten,water,2026-01-11 19:46:45.504937+00
+c147205c-35bf-4a39-9f14-bb819fa69266,Alphonso mango,fruit,Tropische vruchten,vitamine A,2026-01-11 19:46:40.069681+00
+672fee3b-3d74-4cd3-a299-5f096e6dd679,Alsem,groente,Kruiden,absintine,2026-01-11 19:46:55.93163+00
+22fed982-847b-4089-bf37-1105cf129d36,Amerikaans e bosbes,fruit,Bessen,antioxidanten,2026-01-11 19:46:38.063001+00
+e24b7af4-d4b8-4e2f-b636-95e74e4ec493,Amsoi,groente,Bladgroenten,ijzer,2026-01-11 19:46:57.106898+00
+fc2024a2-a2a2-4978-9e0d-feffafcbfef6,Ananas,fruit,Tropische vruchten,antioxidanten,2026-01-11 11:57:01.061778+00
+401dba67-721d-46d4-a233-3afab9cf2470,Andijvie,groente,Bladgroenten,vitamine K,2026-01-11 19:46:26.198948+00
+0244b83a-990d-4fbc-9f9d-b1907effa88e,Anijszaad,groente,Specerijen,ijzer,2026-01-11 19:46:53.758967+00
+bfa2e1cc-9a47-43ab-a9e5-81cb71bd8344,Appel,fruit,Pitvruchten,vezels,2026-01-11 11:57:01.061778+00
+d3316236-f1ce-4517-a500-64511a10bbb5,Appel Braeburn,fruit,Pitvruchten,vezels,2026-01-11 19:46:36.221062+00
+c9c99445-3865-4075-8e87-e913d8ab02fa,Appel Cox,fruit,Pitvruchten,vezels,2026-01-11 19:46:36.334138+00
+66896d56-72a6-4de9-b674-15ee7fff9766,Appel Elstar,fruit,Pitvruchten,vezels,2026-01-11 19:46:35.810407+00
+cc79c3c1-f5d0-4f4b-95c3-114024bec582,Appel Golden Delicious,fruit,Pitvruchten,vezels,2026-01-11 19:46:36.117502+00
+e10f26a4-9fd1-4a8a-ba64-19920c179be5,Appel Goudreinet,fruit,Pitvruchten,vezels,2026-01-11 19:46:36.010439+00
+4b6084b2-b0b7-420b-9cd6-8bbf6c4e4c0d,Appel Jonagold,fruit,Pitvruchten,vezels,2026-01-11 19:46:35.908826+00
+f60c2f8d-e108-4ac6-ab21-be682311ac2c,Appelappel Granny Smith,fruit,Pitvruchten,vezels,2026-01-11 19:46:35.706965+00
+784e962b-2297-4a4b-9850-ae94579127c6,Appelbanaan,fruit,Tropische vruchten,kalium,2026-01-11 11:57:01.061778+00
+562dac57-858d-4dc7-a858-81073a6860db,Arrowroot,groente,Knolgewassen,zetmeel,2026-01-11 19:46:46.56781+00
+d611a8e5-1b76-42a5-ad86-327ce079b13e,Artisjok,groente,Vruchtgroenten,vezels,2026-01-11 19:46:26.444401+00
+e84f730b-f8a2-4007-856e-79a8cc16b38b,Artisjok paars,groente,Vruchtgroenten,cynarine,2026-01-11 19:46:46.350734+00
+9801c59b-f649-40c4-903b-63b1df267906,Ashwagandha,groente,Knolgewassen,withanoliden,2026-01-11 19:46:56.465538+00
+655484ff-c108-4a20-8df4-2b2c9f566069,Asperge,groente,Stengelgroenten,foliumzuur,2026-01-11 19:46:26.626165+00
+69031552-d9dc-4d5e-ac16-553aab7df5f2,Aubergine,groente,Vruchtgroenten,antioxidanten,2026-01-11 19:46:26.798603+00
+863d4943-5699-4cfa-acc8-1d679c88145d,Augurk,groente,Vruchtgroenten,vitamine K,2026-01-11 19:46:29.413542+00
+7b63a753-0e04-4790-93fb-8af183832381,Avocado,fruit,Tropische vruchten,kalium,2026-01-11 11:57:01.061778+00
+8df68b22-ea21-4136-9630-5ac7c867b433,Bakbanaan,fruit,Tropische vruchten,zetmeel,2026-01-11 19:46:40.985046+00
+707edeaa-daa0-427f-83ad-271ab5e6b493,Banaan,fruit,Tropische vruchten,kalium,2026-01-11 11:57:01.061778+00
+18a95b0d-4d6b-44f9-8052-b3706eb42a59,Baobab,fruit,Exotische vruchten,vitamine C,2026-01-11 19:46:41.700141+00
+9db97962-39e8-4d26-95f0-12b79338073b,Basilicum,groente,Kruiden,vitamine K,2026-01-11 19:46:47.329635+00
+d50617d0-ad9c-4dcb-8b01-05408c10baeb,Bataat,groente,Knolgewassen,vitamine A,2026-01-11 19:46:34.118859+00
+c98ef3da-3249-4228-b1c8-8956cfb32625,Bergamot,fruit,Citrusvruchten,antioxidanten,2026-01-11 11:57:01.061778+00
+06952b44-168b-4578-8b2a-64a66d235a70,Bergamotbladeren,groente,Kruiden,vitamine C,2026-01-11 19:46:54.574795+00
+564b02dd-bf66-4864-bfd0-d1d81805a460,Bernagie,groente,Kruiden,omega-3,2026-01-11 19:46:55.61709+00
+fb5ce142-bc1e-4b0c-9188-8019c267b90f,Bieslook,groente,Kruiden,vitamine A,2026-01-11 19:46:47.431731+00
+cb3f26af-03c8-4dda-9168-0950954ee642,Bladselderij,groente,Kruiden,vitamine K,2026-01-11 19:46:47.535742+00
+7e0e095d-041b-4c85-9bed-dbe78fa113c5,Blauwe bes,fruit,Bessen,antioxidanten,2026-01-11 11:57:01.061778+00
+74ea4089-8077-45d4-80d4-b361b9f8d50a,Bleekselderij,groente,Stengelgroenten,kalium,2026-01-11 19:46:26.978353+00
+d2f7bc6a-10bb-4747-8966-45f00964f4bf,Bloedsinaasappel,fruit,Citrusvruchten,vitamine C,2026-01-11 19:46:35.280297+00
+695fe1fa-a239-4c2a-bac5-3bea42f06256,Bloemkool,groente,Koolsoorten,vitamine C,2026-01-11 19:46:27.153324+00
+e87a26ac-865e-4177-bf8e-0b617f7c720d,Bloemkool romanesco,groente,Koolsoorten,vitamine C,2026-01-11 19:46:45.922864+00
+f3650da6-7052-4ab6-9529-f12fded8f5bf,Boerenkool,groente,Bladgroenten,vitamine K,2026-01-11 19:46:27.320142+00
+20e46874-8cd9-4134-8789-8285e2e04860,Bok choy,groente,Koolsoorten,calcium,2026-01-11 19:46:27.513122+00
+52ad06c9-9ee4-49be-8c76-5d98260765cd,Bonenkruid,groente,Kruiden,antioxidanten,2026-01-11 19:46:47.64067+00
+a5872993-d548-4311-88b8-f3ff1e3bb13f,Bosbes,fruit,Bessen,antioxidanten,2026-01-11 19:46:37.958322+00
+8da05df9-be8f-4efb-84b4-2d36a715da81,Braam,fruit,Bessen,antioxidanten,2026-01-11 11:57:01.061778+00
+1891f861-017a-414b-a6a4-344861e04093,Broccoli,groente,Koolsoorten,vitamine C,2026-01-11 19:46:27.666242+00
+4d8cd94e-3146-45bc-97b7-9dc1237a7d1a,Broodvrucht,fruit,Tropische vruchten,antioxidanten,2026-01-11 11:57:01.061778+00
+99b3843b-89cf-495d-aebb-b6fdbed1c7fe,Buddha's hand,fruit,Citrusvruchten,vitamine C,2026-01-11 19:46:45.610514+00
+1de26104-2916-47dd-9003-8b1f4b3f95b6,Butternut,groente,Pompoenachtigen,vitamine A,2026-01-11 19:46:29.208072+00
+4c3ba371-2c35-4c1a-99ff-03ec2305ea93,Cactus vijg,fruit,Exotische vruchten,vezels,2026-01-11 19:46:41.803241+00
+0fcffab5-2fc8-42de-803c-bda9ebbb9efc,Calamondin,fruit,Citrusvruchten,antioxidanten,2026-01-11 11:57:01.061778+00
+bcd94bca-9c03-44a1-a070-9e1ac6335149,Cantaloupe,fruit,Meloenen,antioxidanten,2026-01-11 11:57:01.061778+00
+108836d6-6a23-4d82-98fe-4616cb3fe7f4,Cantharellen,groente,Paddenstoelen,vitamine D,2026-01-11 19:46:28.880922+00
+8280cacd-d851-42f6-9d3d-047594ab1372,Carambola,fruit,Exotische vruchten,vitamine C,2026-01-11 19:46:41.295768+00
+7df7e3a6-9e6c-481a-a448-fa8d0e050bf7,Cassabanana,fruit,Tropische vruchten,antioxidanten,2026-01-11 11:57:01.061778+00
+d553e079-251a-4bfc-b2fe-813f39686885,Cassave wortel,groente,Knolgewassen,koolhydraten,2026-01-11 19:46:46.670229+00
+356650eb-b8ec-49ea-baf2-897f2a891398,Cayennepeper,groente,Specerijen,capsaïcine,2026-01-11 19:46:53.457034+00
+770025c9-8ad8-4790-ad0b-48ba832c5802,Champignons,groente,Paddenstoelen,vitamine D,2026-01-11 19:46:28.430174+00
+1eaea311-e7c2-47a5-b897-c627028870b0,Charentais meloen,fruit,Meloenen,vitamine A,2026-01-11 19:46:40.653326+00
+481c320b-a1ad-4ad9-8df6-fd788d87e073,Chayote,fruit,Exotische vruchten,vitamine C,2026-01-11 19:46:41.905736+00
+5a255692-b847-4b02-baba-a429800956bf,Cherimoya,fruit,Tropische vruchten,antioxidanten,2026-01-11 11:57:01.061778+00
+392fb92e-b781-4db5-9d2b-a738fd5b48a6,Chilipoeder,groente,Specerijen,vitamine A,2026-01-11 19:46:53.557343+00
+2675df65-af6c-4ed8-8cdc-a0495b0ed817,Chinapeer,fruit,Pitvruchten,vezels,2026-01-11 11:57:01.061778+00
+e12dbc85-505d-499c-bcdf-1ff7ff9c46f5,Citroen,fruit,Citrusvruchten,vitamine C,2026-01-11 11:57:01.061778+00
+e0059624-068d-465e-bdd4-4084624a0a9d,Citroenceder,fruit,Citrusvruchten,vitamine C,2026-01-11 19:46:45.716566+00
+28dc48a0-72b3-4891-954e-d496884e1664,Citroengras,groente,Kruiden,vitamine C,2026-01-11 19:46:47.845246+00
+e03fc059-e3a4-4313-b7d0-ad0b6d3f8727,Citroenmelisse,groente,Kruiden,antioxidanten,2026-01-11 19:46:47.744597+00
+11694a1c-9646-4fed-bbaa-1231f2b77782,Citroentijm,groente,Kruiden,vitamine C,2026-01-11 19:46:55.518333+00
+7d2f2fa1-874c-4c87-a975-2e4382d46ebb,Citroenverbena,groente,Kruiden,antioxidanten,2026-01-11 19:46:47.945111+00
+8961171e-9208-4335-b662-bb3edd95b329,Clementine,fruit,Citrusvruchten,vitamine C,2026-01-11 11:57:01.061778+00
+9580a047-5dcd-4ba3-b1f2-7a37ddd2e8e3,Costa Rica-guave,fruit,Tropische vruchten,antioxidanten,2026-01-11 11:57:01.061778+00
+8a01f859-cd75-4d41-a4a4-fc8ef185e621,Courgette,groente,Pompoenachtigen,vitamine C,2026-01-11 19:46:28.989175+00
+d07dbd1b-8d1b-4238-a3ee-5080024f07a9,Cranberry,fruit,Bessen,antioxidanten,2026-01-11 19:46:38.179024+00
+841fbd29-6661-4075-b183-ee086260774e,Curryblad,groente,Kruiden,ijzer,2026-01-11 19:46:54.694129+00
+72fddb9d-3aa4-44c3-bfcc-80b4d5b7701f,Curuba,fruit,Tropische vruchten,antioxidanten,2026-01-11 11:57:01.061778+00
+6ed3d566-5da6-4323-8ac3-bbe876665a76,Custardappel,fruit,Tropische vruchten,antioxidanten,2026-01-11 11:57:01.061778+00
+33d63e02-8248-48b0-b7d1-16fb7dac9762,Dadel,fruit,Tropische vruchten,antioxidanten,2026-01-11 11:57:01.061778+00
+1a06b46b-e890-42ea-89cf-c42b64bf5cb0,Dadel Medjool,fruit,Tropische vruchten,kalium,2026-01-11 19:46:39.667096+00
+2a57e441-cb7a-4df4-b7f1-582d602ca994,Daikon radijs,groente,Knolgewassen,vitamine C,2026-01-11 19:46:46.769075+00
+de40466d-a738-4faf-a068-66f9175bc92d,Daslook,groente,Kruiden,allicine,2026-01-11 19:46:56.89821+00
+d4e5d9c6-5a1f-4016-8aab-3ee87a88a63d,Dille,groente,Kruiden,calcium,2026-01-11 19:46:48.043854+00
+91918c2f-845a-436b-9033-9d756979d0a2,Doerian,fruit,Tropische vruchten,antioxidanten,2026-01-11 11:57:01.061778+00
+bdc23870-9543-49f5-a885-472d207e913e,Dragon,groente,Kruiden,ijzer,2026-01-11 19:46:48.192074+00
+b5b98395-a4b2-4049-a846-a1c9b5366589,Dragon Frans,groente,Kruiden,antioxidanten,2026-01-11 19:46:48.298614+00
+7f7d582a-5654-4c41-ae71-f2b0c69b6b55,Dragon Russisch,groente,Kruiden,vitamine A,2026-01-11 19:46:48.402982+00
+e7252546-bd8f-4483-b693-1c8de2490b04,Drakenvrucht,fruit,Exotische vruchten,vitamine C,2026-01-11 19:46:41.399177+00
+d1350403-afc6-4a38-a0d7-681211274df5,Druif,fruit,Druiven,antioxidanten,2026-01-11 11:57:01.061778+00
+5d9db419-e322-4344-9619-3abffff39244,Druiven rood,fruit,Druiven,resveratrol,2026-01-11 19:46:39.234142+00
+3504059d-1fa9-4206-982f-7d2cd65c32df,Druiven wit,fruit,Druiven,antioxidanten,2026-01-11 19:46:39.129877+00
+cb8146bc-2927-452a-adc1-069ec176a751,Druiven zwart,fruit,Druiven,antioxidanten,2026-01-11 19:46:39.332567+00
+db77706f-2504-4f72-9f77-3e20fdbd0b7b,Eikenbladsl a,groente,Bladgroenten,vitamine K,2026-01-11 19:46:30.954404+00
+c896c974-a705-4ad7-89ee-4239fe707722,Engelwortel,groente,Kruiden,vitamine E,2026-01-11 19:46:56.040291+00
+ee3eb97d-4ad8-4651-b275-05cc0fc75fc6,Erwtenranken,groente,Kruiden,vitamine K,2026-01-11 19:46:48.630356+00
+1eea4cac-4b18-4863-b154-089c9ef86be7,Erwtenspruiten,groente,Kruiden,vitamine C,2026-01-11 19:46:48.523051+00
+424f03dd-85f0-4e27-92ac-1efc245d7c0a,Feijoa,fruit,Exotische vruchten,antioxidanten,2026-01-11 11:57:01.061778+00
+1150cb4b-e76c-4fb1-a3d2-166de0706738,Fingerlime,fruit,Citrusvruchten,vitamine C,2026-01-11 19:46:45.818269+00
+6b3174dd-8930-47a6-9f8d-3c9aace5935c,Foelie,groente,Specerijen,antioxidanten,2026-01-11 19:46:53.261357+00
+7ddb5a8e-7ff4-41b5-9fb4-2ba6da6c3a2a,Framboos,fruit,Bessen,vitamine C,2026-01-11 19:46:37.713126+00
+5273fc1f-3cb5-4360-b7f0-ae9457d7c0ef,Galangal,groente,Knolgewassen,antioxidanten,2026-01-11 19:46:46.879926+00
+6389386d-97ee-4b6c-8bde-23e990641950,Galangal wortel,groente,Knolgewassen,antioxidanten,2026-01-11 19:46:48.838029+00
+ef7345eb-fc6e-400d-aee8-e8dc035d7456,Gele mombinpruim,fruit,Exotische vruchten,vitamine A,2026-01-11 11:57:01.061778+00
+f6f214c0-60f9-4871-8e98-160ace97b142,Gele pruim,fruit,Steenvruchten,vitamine C,2026-01-11 19:46:37.282869+00
+3cd01235-dbe8-4eca-ad0f-c6cc41cc9397,Gele wortel,groente,Knolgewassen,vitamine A,2026-01-11 19:46:34.774045+00
+621292a8-1cc9-4ee5-bbf7-e9acbfb4e2b0,Gember,groente,Knolgewassen,gingerol,2026-01-11 19:46:48.730292+00
+e57a6530-9006-4f57-a99b-26b4151c7cb1,Genipapo,fruit,Exotische vruchten,antioxidanten,2026-01-11 11:57:01.061778+00
+b8d10b4a-6807-4b87-b1e5-97e012269eb2,Ginseng,groente,Knolgewassen,ginsenosiden,2026-01-11 19:46:56.351024+00
+e950669d-9017-4307-9c89-82c36f475622,Goji bes,fruit,Bessen,antioxidanten,2026-01-11 19:46:38.546015+00
+3c3d55bb-d594-4d7a-bc57-65f3265d6533,Goudbes,fruit,Bessen,antioxidanten,2026-01-11 11:57:01.061778+00
+6708cccc-231a-4349-9366-b3d5559144f3,Goudsbloem,groente,Kruiden,antioxidanten,2026-01-11 19:46:55.719275+00
+caa9710f-159c-45b1-86d0-152d302a0a33,Granaatappel,fruit,Exotische vruchten,vitamine C,2026-01-11 11:57:01.061778+00
+3785f3a3-361e-496b-a56d-77f4ec07c096,Grapefruit,fruit,Citrusvruchten,vitamine C,2026-01-11 11:57:01.061778+00
+bad15681-dbc9-4ece-ad57-f45cb9854cca,Grapefruit roze,fruit,Citrusvruchten,vitamine C,2026-01-11 19:46:35.393723+00
+2ec44422-f24f-48dd-b029-39abc3b67fd5,Groene asperge,groente,Stengelgroenten,foliumzuur,2026-01-11 19:46:46.032574+00
+f7c129cb-17b4-4d6b-a8ca-61dc3283e2b9,Groene peper,groente,Vruchtgroenten,vitamine C,2026-01-11 19:46:33.132405+00
+07f64aac-992c-4b24-8477-b78a32d5b355,Grosella,fruit,Bessen,antioxidanten,2026-01-11 11:57:01.061778+00
+bbc7b13d-4259-4167-9c97-8464acc6ae1a,Grote bosaardbei,fruit,Bessen,antioxidanten,2026-01-11 11:57:01.061778+00
+abfc6861-d2b8-4a10-9dc7-6dc16b97e197,Guanabana,fruit,Tropische vruchten,vitamine C,2026-01-11 19:46:45.196149+00
+e42d5fdc-1d81-4ce0-8ae5-0bb98ae796e5,Guave,fruit,Tropische vruchten,antioxidanten,2026-01-11 11:57:01.061778+00
+c3d8b9b2-4220-4e46-aafa-525f95c2c86d,Hagebutte,fruit,Exotische vruchten,vitamine C,2026-01-11 19:46:42.009716+00
+1618cd1f-585c-4240-81ae-6aaa797da8bf,Heilig basilicum,groente,Kruiden,antioxidanten,2026-01-11 19:46:55.408717+00
+d7f511c3-cb08-4feb-a404-510636a748ce,Honingmeloen,fruit,Meloenen,vitamine C,2026-01-11 11:57:01.061778+00
+e78e18d0-ed82-4e73-8f66-092354ad8999,Horned meloen,fruit,Meloenen,vitamine C,2026-01-11 19:46:45.294711+00
+7344d606-de70-4a34-bd48-70992b32538f,IJzerhard,groente,Kruiden,vitamine C,2026-01-11 19:46:52.516475+00
+a5897f58-aa48-4346-8f75-d59ed248db76,Ikakopruim,fruit,Exotische vruchten,antioxidanten,2026-01-11 11:57:01.061778+00
+6c5647fb-aba3-4a2c-b8db-edb4f32d4df0,Jabuticaba,fruit,Exotische vruchten,antioxidanten,2026-01-11 11:57:01.061778+00
+d2932902-75be-4e02-99d8-e1e58577a396,Jackfruit,fruit,Tropische vruchten,antioxidanten,2026-01-11 11:57:01.061778+00
+dbcd0488-752a-4af2-a258-74ff9601b7f0,Jakhalsbes,fruit,Exotische vruchten,antioxidanten,2026-01-11 11:57:01.061778+00
+321838bc-b187-48db-bb20-24de3cca3c01,Jambolan,fruit,Exotische vruchten,antioxidanten,2026-01-11 11:57:01.061778+00
+d0b52c24-6b87-4b69-b81c-d6d51b37094a,Japanse wijnbes,fruit,Exotische vruchten,antioxidanten,2026-01-11 11:57:01.061778+00
+7b51617e-a209-472a-9bd3-44fdfad3f038,Jujube,fruit,Exotische vruchten,antioxidanten,2026-01-11 11:57:01.061778+00
+da3e1c07-857b-420a-b98e-d91e8df1b70e,Kaffir limoen blad,groente,Kruiden,vitamine C,2026-01-11 19:46:54.893692+00
+1352d43a-ff7e-4ce4-be55-b35b5d1465bd,Kaki,fruit,Exotische vruchten,vitamine A,2026-01-11 11:57:01.061778+00
+3dea3d34-81cd-4b59-820d-6d11dc43d3fc,Kaneel,groente,Specerijen,antioxidanten,2026-01-11 19:46:52.946567+00
+daf687b1-3df1-44a1-8368-5af7e494c77f,Kapoelasan,fruit,Tropische vruchten,antioxidanten,2026-01-11 11:57:01.061778+00
+db9db9db-6372-45b4-bbb2-c5267e880d22,Kardemom,groente,Specerijen,mangaan,2026-01-11 19:46:52.843534+00
+3dd17545-bef0-4932-922a-7edfecdb1045,Karela,groente,Vruchtgroenten,vitamine C,2026-01-11 19:46:46.983437+00
+ef85e859-679d-458f-abac-4aabd4fcaaab,Karwijzaad,groente,Specerijen,vezels,2026-01-11 19:46:53.657114+00
+161b0ffd-fee5-4842-8525-08757028ec05,Kei-appel,fruit,Exotische vruchten,antioxidanten,2026-01-11 11:57:01.061778+00
+b5225375-0c10-4f57-bdae-3cde8aa1ca25,Kers,fruit,Steenvruchten,antioxidanten,2026-01-11 11:57:01.061778+00
+f345c8ed-0fa5-4a4c-9613-91ba25247544,Kersen zoet,fruit,Steenvruchten,vitamine C,2026-01-11 19:46:39.022859+00
+e7d38c89-c2a1-44cd-9675-a99e93634682,Kerspruim,fruit,Steenvruchten,antioxidanten,2026-01-11 19:46:37.174466+00
+a4f10ee5-8848-4aa0-a4bb-520f9dad8932,Kervel,groente,Kruiden,vitamine C,2026-01-11 19:46:49.254955+00
+00039fff-a173-4883-afcc-77447f9a363f,Ketembilla,fruit,Exotische vruchten,antioxidanten,2026-01-11 11:57:01.061778+00
+3cc97f87-12ae-44dc-a456-7dd1a592999d,Kidney bonen,groente,Peulvruchten,,2026-01-12 11:47:07.543605+00
+3ce493de-7cfb-444d-86a1-b7bc9122dc14,Kiwano,fruit,Meloenen,vitamine E,2026-01-11 19:46:45.397729+00
+819378e1-60f8-48ba-956c-941a0e918fa3,Kiwi,fruit,Exotische vruchten,vitamine C,2026-01-11 11:57:01.061778+00
+aef271aa-dfcf-4942-a2eb-730922bdf314,Kiwi goud,fruit,Exotische vruchten,vitamine C,2026-01-11 19:46:39.921965+00
+305b841b-bdce-4941-8035-8a084c37157d,Kiwi groen,fruit,Exotische vruchten,vitamine C,2026-01-11 19:46:39.817861+00
+2158a116-fa1d-403c-997d-0ea0bf38a40a,Knippa,fruit,Exotische vruchten,antioxidanten,2026-01-11 11:57:01.061778+00
+41189b04-cfee-430b-a0d3-f0d111b7fd93,Knoflook,groente,Kruiden,allicine,2026-01-11 19:46:48.940089+00
+515075dd-021a-438b-9a05-e7b063e3383d,Knolraap,groente,Knolgewassen,vitamine C,2026-01-11 19:46:32.145464+00
+7c1f6b9c-f93e-46a1-b99b-99690d909fa3,Knolselderij,groente,Knolgewassen,vitamine K,2026-01-11 19:46:28.322335+00
+263c34c3-cb1b-4360-9eb3-ad3942255d4b,Koenjit,groente,Knolgewassen,curcumine,2026-01-11 19:46:56.579366+00
+8a99714e-7ee4-4f18-8d1d-f835b1a2bd96,Kokosnoot,fruit,Tropische vruchten,water,2026-01-11 11:57:01.061778+00
+ffaa2963-728d-4bf2-bf0c-33df23717f0c,Komijn,groente,Specerijen,ijzer,2026-01-11 19:46:52.739425+00
+8af89cde-0690-4270-9b2f-e2850270ba3f,Komkommer,groente,Vruchtgroenten,water,2026-01-11 19:46:29.318199+00
+dd86a79c-a873-4baf-98c7-eb0156643c2a,Koolraapstelen,groente,Koolsoorten,calcium,2026-01-11 19:46:32.71392+00
+e944ce5b-e7fd-4cd7-800d-15a0682aea1b,Koolrabi,groente,Koolsoorten,vitamine C,2026-01-11 19:46:32.609514+00
+987165f2-58d1-43d4-bf13-e58a37daadd3,Koriander vers,groente,Kruiden,vitamine K,2026-01-11 19:46:49.046745+00
+46fff575-02ca-4566-a34b-2662d902ebbb,Koriander zaad,groente,Specerijen,mangaan,2026-01-11 19:46:49.152174+00
+8c20d9d5-40c2-4b21-a51f-1787814984db,Korlan,fruit,Tropische vruchten,antioxidanten,2026-01-11 11:57:01.061778+00
+acb6250b-e7f1-482e-95dd-383e58a37a6e,Krieken,fruit,Steenvruchten,antioxidanten,2026-01-11 19:46:38.811459+00
+92e54475-fd19-4286-9769-6ba4c3309b4b,Kruidnagel,groente,Specerijen,mangaan,2026-01-11 19:46:53.048226+00
+e2ce6f26-839a-45d3-8a03-b46766b1e6d0,Kruipbraam,fruit,Bessen,antioxidanten,2026-01-11 11:57:01.061778+00
+cf81327c-b773-404b-8cfa-f82284685712,Kruisbes,fruit,Bessen,antioxidanten,2026-01-11 11:57:01.061778+00
+e3f502f4-8aa5-4aa5-b9df-7168078620c5,Kumquat,fruit,Citrusvruchten,antioxidanten,2026-01-11 11:57:01.061778+00
+f20dc047-91c1-4b55-a382-120e03a0be8b,Kumquat ovaal,fruit,Citrusvruchten,vitamine C,2026-01-11 19:46:42.16122+00
+1cae8214-58a9-41b6-a67f-ecd8d53ba668,Kumquat rond,fruit,Citrusvruchten,vitamine C,2026-01-11 19:46:42.267404+00
+7fb3b935-a824-4a48-a91c-7f8ca57704d8,Kurkuma,groente,Knolgewassen,curcumine,2026-01-11 19:46:49.358+00
+e5074e98-9c22-4082-b042-f8514745e664,Kwee,fruit,Pitvruchten,vezels,2026-01-11 19:46:42.366124+00
+64c9c59d-aa2d-4f8e-aae5-b728981dadf9,Kweepeer,fruit,Pitvruchten,vezels,2026-01-11 11:57:01.061778+00
+cb53e4b7-0f83-46ee-9b44-8beff482954b,Langsat,fruit,Tropische vruchten,antioxidanten,2026-01-11 11:57:01.061778+00
+f4c10270-5c7f-4add-a492-7fc755427492,Laurier,groente,Kruiden,vitamine A,2026-01-11 19:46:49.466724+00
+a1072900-c0fc-4625-a1f1-444a57df051d,Lavendel,groente,Kruiden,antioxidanten,2026-01-11 19:46:49.567085+00
+12bc5436-8fb5-4ebf-8010-f511c6131291,Lemon,fruit,Citrusvruchten,vitamine C,2026-01-11 19:46:42.480785+00
+6cfe1f97-a499-4f73-af5b-e4dc5e92d4ab,Lemongras,groente,Kruiden,vitamine A,2026-01-11 19:46:49.674756+00
+f1ecbfea-094f-467a-8cae-7032f6ffb763,Lente-ui,groente,Uiengewassen,vitamine K,2026-01-11 19:46:31.706028+00
+987e2bee-ab1a-4cb9-a74b-093d07983057,Lenteajuin,groente,Uiengewassen,vitamine K,2026-01-11 19:46:56.695411+00
+ecc26e7e-97d5-458a-9717-76c594f590af,Liefstokwortel,groente,Kruiden,kalium,2026-01-11 19:46:49.781372+00
+d4f0b7a9-64dd-4fb6-b3e2-f28a09c3037c,Lijnzaad,groente,Specerijen,omega-3,2026-01-11 19:46:54.178945+00
+88a163cc-c7f9-4eec-ac8f-a9cea43385f8,Lijsterbes,fruit,Bessen,antioxidanten,2026-01-11 11:57:01.061778+00
+2199c3b9-c985-4e42-9214-6aeb3c5846e9,Limequat,fruit,Citrusvruchten,vitamine C,2026-01-11 19:46:42.585534+00
+78e6bb44-0bc3-4bee-9b35-e54b7ef06708,Limoen,fruit,Citrusvruchten,vitamine C,2026-01-11 11:57:01.061778+00
+471c624b-7319-4716-a2d7-e62d85ad7686,Lollo rosso,groente,Bladgroenten,vitamine A,2026-01-11 19:46:30.844117+00
+54699515-7d82-4265-8fae-3c1696a5a1ef,Longan,fruit,Tropische vruchten,antioxidanten,2026-01-11 11:57:01.061778+00
+ed39a27a-c9bb-4ac0-bdb8-54a7216d60fb,Look zonder look,groente,Kruiden,vitamine C,2026-01-11 19:46:56.799279+00
+1b4ab306-debb-460b-996f-33c0025c1240,Loquat,fruit,Pitvruchten,antioxidanten,2026-01-11 11:57:01.061778+00
+4e7e38ba-00c5-4ce4-9b21-fa87b010e28a,Lotus wortel,groente,Knolgewassen,vezels,2026-01-11 19:46:47.100929+00
+5ba1ff38-5565-4259-86bc-74c5c84eb175,Lotusvrucht,fruit,Exotische vruchten,antioxidanten,2026-01-11 11:57:01.061778+00
+1374b208-90a4-4fb4-82ea-7eef88ce5ee4,Lucuma,fruit,Tropische vruchten,antioxidanten,2026-01-11 11:57:01.061778+00
+c64c37a9-e846-469d-8bbb-6f86dd362d71,Lulo,fruit,Tropische vruchten,antioxidanten,2026-01-11 11:57:01.061778+00
+11b802d9-3ca6-4d06-a8fd-f86b29146f0b,Lychee,fruit,Tropische vruchten,antioxidanten,2026-01-11 11:57:01.061778+00
+2013681c-326c-4dd5-b19c-424119aaed7d,Maanzaad,groente,Specerijen,calcium,2026-01-11 19:46:54.061877+00
+e7b76893-d48e-42e1-bd4f-32cec88216fe,Mabolo,fruit,Exotische vruchten,antioxidanten,2026-01-11 11:57:01.061778+00
+07bc872a-c060-4f12-b048-ec85bf11514c,Maggikruid,groente,Kruiden,vitamine C,2026-01-11 19:46:49.887057+00
+ce88c050-db21-4952-a01c-e96a67f1755c,Mais,groente,Vruchtgroenten,,2026-01-12 11:46:04.22113+00
+0caca8e8-0bb5-45d4-9c94-56a550bdae76,Maïskolf,groente,Vruchtgroenten,vezels,2026-01-11 19:46:33.559726+00
+8e64475e-bfb0-48bd-9903-e754f3e45bc8,Majoraan,groente,Kruiden,vitamine K,2026-01-11 19:46:49.985471+00
+3b1ebe46-5aca-492f-bebc-54871e14b44c,Mamey sapota,fruit,Tropische vruchten,antioxidanten,2026-01-11 11:57:01.061778+00
+2e08da7c-c7d1-4692-bf78-8261ba19ff17,Mandarijn,fruit,Citrusvruchten,vitamine C,2026-01-11 11:57:01.061778+00
+03b95746-988e-44aa-b8bd-dcb2293424d5,Mangistan,fruit,Tropische vruchten,antioxidanten,2026-01-11 11:57:01.061778+00
+294178ff-989e-4b91-88aa-ba6802fefd6a,Mango,fruit,Tropische vruchten,vitamine A,2026-01-11 11:57:01.061778+00
+a98f8d92-297a-4dfa-9a81-3eaa978cf2b6,Maracuja,fruit,Tropische vruchten,vitamine A,2026-01-11 19:46:41.194792+00
+d2ba979e-1656-4853-a5e3-c1a336c7bd41,Marang,fruit,Tropische vruchten,antioxidanten,2026-01-11 11:57:01.061778+00
+a1a627fc-e1a9-4a3b-879d-4c5970e6d498,Meloen,fruit,Meloenen,antioxidanten,2026-01-11 11:57:01.061778+00
+32da7606-a61a-42d2-b537-079e8774e638,Meloen cantaloupe,fruit,Meloenen,vitamine A,2026-01-11 19:46:40.325043+00
+ef08d9a7-0daa-49ca-840e-9253f7fa4b4b,Meloen galia,fruit,Meloenen,water,2026-01-11 19:46:40.223074+00
+b3c66592-0df1-404b-9173-da28a8a90917,Mierikswortel,groente,Knolgewassen,vitamine C,2026-01-11 19:46:56.145578+00
+7d43c9c4-70ac-4471-b83b-5453a3acedba,Mini-kiwi,fruit,Exotische vruchten,antioxidanten,2026-01-11 11:57:01.061778+00
+451fd128-ba0d-4bfa-b13d-d67a15a0822a,Minneola,fruit,Citrusvruchten,vitamine C,2026-01-11 19:46:42.746748+00
+8c9ee15c-9316-4e15-bb12-e78e34edc6f0,Mirabelle,fruit,Steenvruchten,vitamine C,2026-01-11 19:46:37.076427+00
+63c6b486-0875-4963-b971-470e9d7405bb,Miracle fruit,fruit,Exotische vruchten,proteïnen,2026-01-11 19:46:42.847366+00
+4c725f85-69a5-4b96-a9f3-ff592886a4db,Mispel,fruit,Pitvruchten,vezels,2026-01-11 11:57:01.061778+00
+40daff87-50d8-43d3-8a29-7046d9c44708,Mizuna,groente,Kruiden,vitamine C,2026-01-11 19:46:57.222656+00
+915ff921-06b0-448d-8eeb-bec9853b0d2c,Moendoe,fruit,Exotische vruchten,antioxidanten,2026-01-11 11:57:01.061778+00
+8a70e637-4a8e-4d60-b187-2abc899fc04e,Moerbei,fruit,Bessen,antioxidanten,2026-01-11 11:57:01.061778+00
+2be35521-5827-482c-9834-4aab9cc530b9,Monstera,fruit,Exotische vruchten,kalium,2026-01-11 19:46:42.948675+00
+68fa8850-c116-4b5a-8b03-439719f63d1d,Morello kersen,fruit,Steenvruchten,vitamine C,2026-01-11 19:46:38.920538+00
+db8aa935-6775-4b6c-9295-8d143dfdea74,Moriche,fruit,Exotische vruchten,antioxidanten,2026-01-11 11:57:01.061778+00
+3b90d536-10a8-4a3d-a2f0-4ce4b0443a51,Mosterdzaad,groente,Specerijen,selenium,2026-01-11 19:46:53.860629+00
+2dc7d2c4-68bd-4f4e-9aff-ef80695eba8b,Munt appelmunt,groente,Kruiden,vitamine C,2026-01-11 19:46:50.303867+00
+2b744dc7-9b49-4cc8-9e7f-538593d22dc4,Munt kruizemunt,groente,Kruiden,vitamine A,2026-01-11 19:46:50.195972+00
+843b7e78-40be-4464-806b-9a8c26dc7082,Munt pepermunt,groente,Kruiden,menthol,2026-01-11 19:46:50.087374+00
+e52cde25-9a85-40c0-a7d4-64b212ddc994,Mustard greens,groente,Kruiden,vitamine K,2026-01-11 19:46:57.426383+00
+adefe3cf-4d32-40fc-90e6-ff81d80ff86c,Nance,fruit,Exotische vruchten,antioxidanten,2026-01-11 11:57:01.061778+00
+a5c6353b-0b4b-42ac-9f98-cf9032519557,Nashipeer,fruit,Pitvruchten,vezels,2026-01-11 11:57:01.061778+00
+282c876f-1d39-4234-b851-66fced7785a2,Natalpruim,fruit,Exotische vruchten,antioxidanten,2026-01-11 11:57:01.061778+00
+ee50c75e-6c00-4eac-ada3-c550e405fb00,Nectarine,fruit,Steenvruchten,vitamine A,2026-01-11 11:57:01.061778+00
+f63a0231-694f-4a36-8975-1297a7f81eff,Noni,fruit,Exotische vruchten,antioxidanten,2026-01-11 11:57:01.061778+00
+8e142fda-782e-4e2f-8dd7-04acad65a94b,Nootmuskaat,groente,Specerijen,magnesium,2026-01-11 19:46:53.162145+00
+50655708-2db3-4170-8d2f-f2005db247f7,Oesterzwammen,groente,Paddenstoelen,eiwitten,2026-01-11 19:46:28.551339+00
+da003832-1c85-4dc4-b547-76e103a6e31b,Olifantsappel,fruit,Exotische vruchten,antioxidanten,2026-01-11 11:57:01.061778+00
+d1aec789-c1ae-4f0b-9ebc-159d27e71ebd,Olijf,fruit,Steenvruchten,antioxidanten,2026-01-11 11:57:01.061778+00
+de811b2b-ecaa-472c-bcaf-af2beed7bb7b,Oregano,groente,Kruiden,antioxidanten,2026-01-11 19:46:50.408712+00
+5ace661e-65ac-46a9-b701-f7690e504620,Orinoco-appel,fruit,Exotische vruchten,antioxidanten,2026-01-11 11:57:01.061778+00
+911008c0-8034-424e-9392-5711b2d56fb3,Oroblanco,fruit,Citrusvruchten,vitamine C,2026-01-11 19:46:43.056258+00
+c487302a-f36d-42ef-945f-8762e01ff2c9,Paarse asperge,groente,Stengelgroenten,antioxidanten,2026-01-11 19:46:46.24904+00
+22c00281-28b5-4fcf-b53e-eda4fffa0cb8,Paarse wortel,groente,Knolgewassen,antioxidanten,2026-01-11 19:46:34.880771+00
+666eff27-a807-47b6-aad3-1cb3d5a249ac,Paksoi,groente,Bladgroenten,calcium,2026-01-11 19:46:31.923966+00
+a32b75d9-a255-480d-b019-e4198b99d639,Pandanblad,groente,Kruiden,antioxidanten,2026-01-11 19:46:54.794585+00
+0c583d9a-88dd-403c-b99e-c10eefb38bf3,Papaja,fruit,Tropische vruchten,vitamine C,2026-01-11 11:57:01.061778+00
+e2260d47-3a2d-4f9e-b70c-87fac192bd9e,Papaya,fruit,Tropische vruchten,vitamine A,2026-01-11 19:46:43.157867+00
+285bf914-b0ae-4d6b-bf33-066eb37e8e60,Papayadruif,fruit,Tropische vruchten,vitamine C,2026-01-11 19:46:43.271851+00
+4584c4ef-d539-4f9e-9a4d-a3776fccc374,Papeda,fruit,Exotische vruchten,antioxidanten,2026-01-11 11:57:01.061778+00
+2b45c46b-fcf5-4df1-8cdc-58acbd38fa2c,Paprika,groente,Vruchtgroenten,vitamine C,2026-01-11 19:46:29.628043+00
+ca62bfa9-650b-487d-a234-372f401a7bb8,Paprikapoeder,groente,Specerijen,vitamine A,2026-01-11 19:46:53.358445+00
+1f100d21-2d26-402c-a8ae-1f633309dca2,Passievrucht,fruit,Tropische vruchten,vitamine C,2026-01-11 11:57:01.061778+00
+101d4a14-dfa9-45cb-820f-745b24cc9856,Pastinaak,groente,Knolgewassen,vezels,2026-01-11 19:46:32.029822+00
+c26eb302-6698-40a1-b072-5a1bcf196885,Pawpaw,fruit,Exotische vruchten,antioxidanten,2026-01-11 11:57:01.061778+00
+dc7475b7-fc6a-453e-b443-e5d58b358ab9,Peer,fruit,Pitvruchten,vezels,2026-01-11 11:57:01.061778+00
+4ed34899-d5f5-4fa9-ae16-8c4d2d8c88ca,Peer Conference,fruit,Pitvruchten,vezels,2026-01-11 19:46:36.43734+00
+5feba65f-25ef-4753-b77f-5dfd641c07a1,Peer Doyenné,fruit,Pitvruchten,vezels,2026-01-11 19:46:36.542231+00
+83748f63-aea9-4117-bc0d-c607d8a7373e,Peer Gieser Wildeman,fruit,Pitvruchten,kalium,2026-01-11 19:46:36.712626+00
+2a6e2dee-85e4-4784-bdd9-6de1aed996ba,Peer Williams,fruit,Pitvruchten,vitamine C,2026-01-11 19:46:36.820806+00
+32a34e36-a7f5-4814-8668-11fae22ceb19,Peper groen,groente,Specerijen,vitamine K,2026-01-11 19:46:51.014566+00
+b662ea6d-5d24-4be7-b9ec-225f3e9fc684,Peper lang,groente,Specerijen,piperine,2026-01-11 19:46:51.113147+00
+f82fda67-35a0-405c-a281-8b7e3c529fe9,Peper roze,groente,Specerijen,vitamine C,2026-01-11 19:46:50.913732+00
+e389f4b8-c319-4d0d-a79c-9ec6c7ac6994,Peper wit,groente,Specerijen,antioxidanten,2026-01-11 19:46:50.809301+00
+963d8adb-b4fa-4d46-a215-4d8f61afe3a3,Peper zwart,groente,Specerijen,piperine,2026-01-11 19:46:50.706026+00
+e06a26e8-ba0e-4065-bfde-d80dd1c9ac7a,Pepino,fruit,Exotische vruchten,antioxidanten,2026-01-11 11:57:01.061778+00
+8c70fedf-1033-465b-bd68-a1fd7c430a5b,Perilla,groente,Kruiden,antioxidanten,2026-01-11 19:46:55.104557+00
+71827a24-7a42-491a-944e-c8041a662027,Persimon,fruit,Exotische vruchten,vitamine A,2026-01-11 19:46:43.509515+00
+5cd7bb1e-0de9-476c-a473-c036c00cbf09,Perzik,fruit,Steenvruchten,vitamine A,2026-01-11 11:57:01.061778+00
+301f1a35-8fd9-40ea-912c-a62a50872590,Perzikpalm,fruit,Exotische vruchten,antioxidanten,2026-01-11 11:57:01.061778+00
+acac07b2-4fce-45e3-91cf-1574abd0cb7f,Peterselie gekruld,groente,Kruiden,vitamine C,2026-01-11 19:46:50.611087+00
+98b6cf6d-d0a5-485b-bac7-ff7c23a63387,Peterselie plat,groente,Kruiden,vitamine K,2026-01-11 19:46:50.510624+00
+13e46cfa-bb55-4b0e-8d47-1e86276b63a6,Peulen,groente,Peulvruchten,eiwitten,2026-01-11 19:46:32.289727+00
+590152f3-5133-4135-b022-08199bdcf290,Peultjes,groente,Peulvruchten,vitamine C,2026-01-11 19:46:32.400913+00
+605dc56d-d58e-4880-96a3-16be38958c06,Physalis,fruit,Bessen,vitamine C,2026-01-11 19:46:43.609355+00
+8bd09402-995f-4a40-b87e-232a24af5080,Pinda appel,fruit,Exotische vruchten,vitamine C,2026-01-11 19:46:43.70963+00
+1713c673-4445-42ba-b62a-9e1707865938,Pitaja,fruit,Exotische vruchten,vitamine A,2026-01-11 11:57:01.061778+00
+1812215e-41f3-4743-a373-27e61856959a,Pitomba I,fruit,Exotische vruchten,antioxidanten,2026-01-11 11:57:01.061778+00
+92340c53-bb50-4a82-a89d-855ab6d807c0,Pitomba II,fruit,Exotische vruchten,antioxidanten,2026-01-11 11:57:01.061778+00
+9c48ec4f-ef54-4094-8bb3-cbbc26d7693e,Pluot,fruit,Steenvruchten,vitamine A,2026-01-11 11:57:01.061778+00
+3beae4d4-bb69-4a96-b734-4cd128ad752b,Pomelo,fruit,Citrusvruchten,antioxidanten,2026-01-11 11:57:01.061778+00
+5ac4add1-705d-4520-b10c-2602ab0d9e19,Pompelmoes,fruit,Citrusvruchten,vitamine C,2026-01-11 11:57:01.061778+00
+06bf67bf-981d-4abd-af2c-91ebc9586c15,Pompoen,groente,Pompoenachtigen,vitamine A,2026-01-11 19:46:29.100533+00
+11ba6ba4-6a92-47ea-9dbd-dddca1d5a989,Pompoenpitten,groente,Specerijen,magnesium,2026-01-11 19:46:54.380956+00
+2bec4610-feef-4e34-b1b3-565ddf4bc4fb,Portobello,groente,Paddenstoelen,selenium,2026-01-11 19:46:28.781494+00
+a637e62e-a534-46cb-a2ba-f8c38146b2d9,Postelein,groente,Bladgroenten,omega-3,2026-01-11 19:46:31.813489+00
+f517498a-0880-4ba9-94fe-5b7f25b6a9d4,Prachtframboos,fruit,Bessen,antioxidanten,2026-01-11 11:57:01.061778+00
+bd049d8b-6989-4a55-b382-6f1e7fe27c28,Prachtige mango,fruit,Tropische vruchten,antioxidanten,2026-01-11 11:57:01.061778+00
+6747949c-dcaf-47aa-beb9-f94736b50b62,Prei,groente,Uiengewassen,vitamine K,2026-01-11 19:46:29.848504+00
+a12fa2dc-4244-44e5-bb60-07895568220a,Pruim,fruit,Steenvruchten,vitamine A,2026-01-11 11:57:01.061778+00
+55607860-7a57-46f2-b3b1-bb12926004b7,Puntpaprika,groente,Vruchtgroenten,vitamine C,2026-01-11 19:46:32.81483+00
+21666d6d-3d81-4af9-8508-3a359e917458,Raapstelen,groente,Bladgroenten,calcium,2026-01-11 19:46:30.165924+00
+37ee2b08-b264-4081-a75b-27d2d1a4d6f7,Raapstelen Aziatisch,groente,Kruiden,calcium,2026-01-11 19:46:57.528885+00
+d742c97a-0808-4483-a294-d5443ee71f92,Rabarber,groente,Stengelgroenten,vitamine K,2026-01-11 19:46:32.923019+00
+1a0fda5c-af9c-4a09-aa1c-ffa8dbd2cd96,Rabarberwortel,groente,Knolgewassen,antioxidanten,2026-01-11 19:46:56.246033+00
+ddbe3f8f-e013-4702-bcbe-b879d55f3a24,Radhuni,groente,Specerijen,vezels,2026-01-11 19:46:51.245969+00
+c3659bcf-261b-4c7b-bd4c-215a60fd18e9,Radijs,groente,Knolgewassen,vitamine C,2026-01-11 19:46:29.949462+00
+5a95e2b0-3dcc-4908-96d9-a07f3c14dfb0,Ramboetan,fruit,Tropische vruchten,antioxidanten,2026-01-11 11:57:01.061778+00
+ec17cd74-5221-4169-8bc6-1ee1a62d589e,Rambutan,fruit,Tropische vruchten,vitamine C,2026-01-11 19:46:41.497172+00
+f55b60d7-a9ae-4d48-b096-4a21f7e00dc9,Rammenas,groente,Knolgewassen,vitamine C,2026-01-11 19:46:30.056047+00
+f48fa361-e83b-4835-8a9b-963301496df4,Rapen,groente,Knolgewassen,vitamine C,2026-01-11 19:46:30.279548+00
+911f6885-a68f-4535-be27-25343c30bea8,Rijsbes,fruit,Bessen,antioxidanten,2026-01-11 11:57:01.061778+00
+d613fd37-f844-4400-be10-34cd02926985,Rode banaan,fruit,Tropische vruchten,kalium,2026-01-11 19:46:40.863955+00
+6ba98e98-a3df-4eb8-9818-6168aa0f10ee,Rode bes,fruit,Bessen,antioxidanten,2026-01-11 11:57:01.061778+00
+0e52f5eb-0f89-42e6-9aa8-fe95ae10a776,Rode bieten,groente,Knolgewassen,foliumzuur,2026-01-11 19:46:30.391091+00
+f1958663-4555-4981-9ef5-ef34482f90ec,Rode bosbes,fruit,Bessen,antioxidanten,2026-01-11 11:57:01.061778+00
+6b694525-9402-464f-9af9-610687dc4668,Rode drakenvruch t,fruit,Exotische vruchten,magnesium,2026-01-11 19:46:43.814965+00
+ee3d5280-d12e-4d24-a8f0-a26c927fc55f,Rode kool,groente,Koolsoorten,vitamine C,2026-01-11 19:46:27.817512+00
+9628f3b5-3e40-4c1f-abfc-e7fa7a66cb1f,Rode moerbei,fruit,Bessen,antioxidanten,2026-01-11 11:57:01.061778+00
+b9fae2db-a9f5-4432-8e05-0399887eb13b,Rode mombinpruim,fruit,Exotische vruchten,vitamine A,2026-01-11 11:57:01.061778+00
+4b7ab7a4-a424-4454-9c15-0a24ca4a45b6,Rode peper,groente,Vruchtgroenten,capsaïcine,2026-01-11 19:46:33.025027+00
+70a09e91-f34e-4ab0-a87e-901a1738bdf3,Rode ui,groente,Uiengewassen,quercetine,2026-01-11 19:46:31.483747+00
+b1e004c1-7342-45df-9301-d7c58c77341a,Romaine sla,groente,Bladgroenten,vitamine A,2026-01-11 19:46:30.741951+00
+55ef725d-6edb-4192-8220-5e0b82e7440f,Rozemarijn,groente,Kruiden,ijzer,2026-01-11 19:46:51.356277+00
+957a05aa-8324-4eeb-afe8-8d229670a35f,Rozenbottel,fruit,Exotische vruchten,antioxidanten,2026-01-11 11:57:01.061778+00
+7749a7e4-9c12-4306-b99b-94a22bab7f90,Rucola,groente,Bladgroenten,vitamine K,2026-01-11 19:46:30.52813+00
+0b05b0c8-6e07-49c0-940b-df41596e8016,Saffra an,groente,Specerijen,antioxidanten,2026-01-11 19:46:51.575798+00
+b53a1dbb-8a7f-4454-8941-58350ed0d9a3,Salak,fruit,Tropische vruchten,antioxidanten,2026-01-11 11:57:01.061778+00
+5d4de4f8-58ff-4795-afb1-89156efe3658,Salie,groente,Kruiden,vitamine K,2026-01-11 19:46:51.465056+00
+10cc0ddb-6c14-4fce-86b0-c91ab54ef7bc,Santol,fruit,Exotische vruchten,antioxidanten,2026-01-11 11:57:01.061778+00
+0a005596-c35f-4863-b3ee-e31358ddb825,Sapodilla,fruit,Tropische vruchten,antioxidanten,2026-01-11 11:57:01.061778+00
+9497a220-5f30-4ad2-92ac-f12b30db3792,Sapote wit,fruit,Exotische vruchten,vitamine C,2026-01-11 19:46:43.97246+00
+46f51502-a273-42e2-83c6-704efb3c91fe,Sapote zwart,fruit,Exotische vruchten,vitamine C,2026-01-11 19:46:44.082626+00
+9b5ae9d2-a666-4532-89a8-8c89ca939983,Satsuma,fruit,Citrusvruchten,antioxidanten,2026-01-11 11:57:01.061778+00
+a472bc87-f0a3-4f28-ac0e-4ac5575223b5,Savooiekool,groente,Koolsoorten,vitamine K,2026-01-11 19:46:28.088279+00
+dc32a4a8-0735-4bd1-b8ff-3f54a2eccbfd,Schroefpalm,fruit,Exotische vruchten,vitamine C,2026-01-11 11:57:01.061778+00
+b1f6921a-253a-49fc-84ce-3383a13798e2,Selder ij,groente,Stengelgroenten,kalium,2026-01-11 19:46:33.237122+00
+126c53cf-15d6-4535-9568-7db9a17b286e,Selderij zaad,groente,Specerijen,calcium,2026-01-11 19:46:51.675922+00
+d9e81d62-7e3e-4508-924f-f9d924dedf2c,Sesamzaad,groente,Specerijen,calcium,2026-01-11 19:46:53.96294+00
+1c9ad242-8c05-4710-8ba1-f2dcf63bfca7,Sharon vrucht,fruit,Exotische vruchten,vitamine A,2026-01-11 19:46:44.193137+00
+b4b284b2-a8c1-4ff8-9a5d-6bcdf331285b,Sharonfruit,fruit,Exotische vruchten,vitamine C,2026-01-11 11:57:01.061778+00
+5fb0ba22-5ac9-4347-85d8-6b79901c52ab,Shiitake,groente,Paddenstoelen,vitamine B,2026-01-11 19:46:28.669825+00
+43ea27ae-a386-4ee9-a3d6-41af79b2dd12,Shiso,groente,Kruiden,omega-3,2026-01-11 19:46:54.996333+00
+366eb513-c4ba-43b1-933d-71a6024ff054,Sinaasappel,fruit,Citrusvruchten,vitamine C,2026-01-11 11:57:01.061778+00
+244bfbc5-71e8-4dd6-96b8-3efd00ef5a7d,Sjalot,groente,Uiengewassen,antioxidanten,2026-01-11 19:46:31.058045+00
+630c2efa-eb6a-41c0-850c-a8dcbe67e7a7,Sjalotten,groente,Uiengewassen,flavonoïden,2026-01-11 19:46:33.351733+00
+5d5a4f47-e42c-4a20-9b0b-0e2281096fc4,Sla ijsbergsla,groente,Bladgroenten,water,2026-01-11 19:46:30.635934+00
+ad9e976b-47b5-41c8-8f07-db89c785138f,Slijmappel,fruit,Exotische vruchten,antioxidanten,2026-01-11 11:57:01.061778+00
+1f91d54a-650f-4053-a09a-b84b59a4d4e2,Snijbonen,groente,Peulvruchten,vezels,2026-01-11 19:46:31.168525+00
+5dd1a120-1fbf-4945-97e9-703834e58a57,Snijmaïs,groente,Vruchtgroenten,vezels,2026-01-11 19:46:33.456911+00
+68951c99-bb03-4904-a11e-c7a961023fa1,Soncoya,fruit,Exotische vruchten,antioxidanten,2026-01-11 11:57:01.061778+00
+d4bceeb3-1b4b-47ba-b0dd-468d4bcbc72b,Soursop,fruit,Tropische vruchten,vitamine C,2026-01-11 19:46:44.311509+00
+fd7d787a-eae7-4897-bd64-302a84fde222,Sperziebonen,groente,Peulvruchten,vitamine K,2026-01-11 19:46:31.274809+00
+4fba1fe3-3628-458e-9e47-e81f01b6fa49,Spinazie,groente,Bladgroenten,ijzer,2026-01-11 19:46:31.382858+00
+162a5700-7911-45fa-be46-a48a20a11ecc,Spitskool,groente,Koolsoorten,vitamine C,2026-01-11 19:46:28.201598+00
+197eb83e-9f57-4015-a56f-7aceff794e98,Spruitjes,groente,Koolsoorten,vitamine C,2026-01-11 19:46:33.796807+00
+4b742044-6c21-4d4c-a87e-9faf7cf2eba4,Steranijs,groente,Specerijen,vitamine C,2026-01-11 19:46:51.778719+00
+01c42872-f144-4ad5-a1dc-cc2aabb206f8,Stervrucht,fruit,Exotische vruchten,vitamine C,2026-01-11 11:57:01.061778+00
+785340df-f1f9-4b6d-9b36-2481be4c5765,Stinkende mango,fruit,Tropische vruchten,antioxidanten,2026-01-11 11:57:01.061778+00
+70e2fb70-f064-4118-afcd-bf7e4a907d35,Stokbonen,groente,Peulvruchten,eiwitten,2026-01-11 19:46:33.902392+00
+95f020d6-0096-438f-8eec-b7cf832f2bc9,Stranddruif,fruit,Exotische vruchten,antioxidanten,2026-01-11 11:57:01.061778+00
+9507b5b5-a3ec-4636-9a7c-b6a9a192dd43,Sugarsnaps,groente,Peulvruchten,vitamine C,2026-01-11 19:46:32.506724+00
+8164bae6-317e-4411-bec7-531bce2bebd4,Suikerappel,fruit,Tropische vruchten,vitamine C,2026-01-11 19:46:44.417685+00
+126234a9-2311-467e-a4f3-3fff91743d19,Sumak,groente,Specerijen,antioxidanten,2026-01-11 19:46:51.882613+00
+b1fa045e-f4e2-43eb-98da-ceca1165a430,Surinaamse kers,fruit,Exotische vruchten,antioxidanten,2026-01-11 11:57:01.061778+00
+85d0a829-b108-484f-abe9-3dcf689c09ca,Sweetie,fruit,Citrusvruchten,antioxidanten,2026-01-11 11:57:01.061778+00
+23c70f56-7465-4b91-a73a-9fa1bdce0b35,Switbonki,fruit,Exotische vruchten,antioxidanten,2026-01-11 11:57:01.061778+00
+03cc90c7-b40d-4d2a-8360-89ae285011a4,Tamarillo,fruit,Tropische vruchten,vitamine C,2026-01-11 11:57:01.061778+00
+02c6170b-0e33-4e9d-8b08-33ff74b1b5f3,Tamarinde,fruit,Tropische vruchten,vezels,2026-01-11 19:46:44.523026+00
+b690f250-42ef-4061-b910-50561fae62b6,Tangelo,fruit,Citrusvruchten,vitamine C,2026-01-11 19:46:44.626453+00
+d3fc743f-509b-4a3f-9b0b-951500f9955c,Tatsoi,groente,Kruiden,calcium,2026-01-11 19:46:57.329864+00
+38eea363-8ab5-4f8d-a20a-e8b3c20cd5aa,Taugé,groente,Kiemgroenten,vitamine C,2026-01-11 19:46:34.224741+00
+c34603d0-6f22-4754-a214-44900ae6d12f,Thai basilicum,groente,Kruiden,vitamine K,2026-01-11 19:46:55.305091+00
+9032e965-bffe-43ac-9dc9-f7007f4f9f23,Tijm,groente,Kruiden,vitamine C,2026-01-11 19:46:51.987472+00
+2b660164-1a30-4d28-8469-387be7fe0e6c,Tijm citroen,groente,Kruiden,vitamine C,2026-01-11 19:46:52.088422+00
+94ea750a-6d9a-4310-afb3-c4c2c865755f,Tijm wilde,groente,Kruiden,antioxidanten,2026-01-11 19:46:52.188905+00
+ca8ca516-4920-4337-ad3b-283242adaf74,Tjampedak,fruit,Tropische vruchten,antioxidanten,2026-01-11 11:57:01.061778+00
+6c273f13-af42-40d3-90e6-b6a2b47f9cd5,Tomaat,groente,Vruchtgroenten,vitamine C,2026-01-11 11:57:01.061778+00
+0f7b2b29-f13d-4831-af86-628597bacf3f,Tomaat cherry,groente,Vruchtgroenten,lycopeen,2026-01-11 19:46:34.341492+00
+bfc13fbb-7925-455b-a82c-26a0ddf08b09,Tomatillo,groente,Vruchtgroenten,vitamine C,2026-01-11 19:46:34.454099+00
+0c6c3e52-2a7d-496a-bf03-ea01d4b67dea,Topinamboer,groente,Knolgewassen,vezels,2026-01-11 11:57:01.061778+00
+229c7754-bde5-426f-b731-95eaa7628264,Tuinboon,groente,Peulvruchten,foliumzuur,2026-01-11 11:57:01.061778+00
+06115ae1-f061-4d36-a64b-3f169e5b75e5,Tuinkers,groente,Kiemgroenten,foliumzuur,2026-01-11 11:57:01.061778+00
+5c11234e-ea20-43ce-9d0f-443c8f0073cd,Tuinmelde,groente,Kiemgroenten,antioxidanten,2026-01-11 11:57:01.061778+00
+eaf0b5d3-2951-496b-a0d3-2440ad9b2a4f,Ugli,fruit,Citrusvruchten,antioxidanten,2026-01-11 11:57:01.061778+00
+8b3355f0-1b2a-40ee-9ebc-705b8ea50a83,Ugli fruit,fruit,Citrusvruchten,vitamine C,2026-01-11 19:46:44.73469+00
+2b682b31-062b-4b08-af87-4998b06714f6,Ui,groente,Uiengewassen,antioxidanten,2026-01-11 11:57:01.061778+00
+661c0c4f-7445-43e4-8b95-b43820c45648,Vanille,groente,Specerijen,antioxidanten,2026-01-11 19:46:54.478111+00
+e9c5b77a-eacc-4df9-b06a-6e944346008d,Veenbes,fruit,Bessen,vitamine C,2026-01-11 19:46:38.274352+00
+2be2e82f-1f73-401a-b224-2d8a1d330ced,Veldsla,groente,Bladgroenten,water,2026-01-11 11:57:01.061778+00
+bbd9ad4f-9015-48f9-a0bf-459a73e2676a,Veldzuring,groente,Bladgroenten,vezels,2026-01-11 11:57:01.061778+00
+8e3be502-7af6-473e-9718-3ed20d0e663a,Venkel,groente,Stengelgroenten,antioxidanten,2026-01-11 11:57:01.061778+00
+15ce55df-ff4a-4fe4-aaf9-acf6196b4a7d,Venkel bladeren,groente,Kruiden,vitamine C,2026-01-11 19:46:55.832521+00
+5f8d8830-1406-4cec-91ae-7e5aadd4d7fc,Venkel zaad,groente,Specerijen,vezels,2026-01-11 19:46:52.287933+00
+10de3dac-db47-405e-9119-c237d74c25ce,Verse vijg,fruit,Exotische vruchten,kalium,2026-01-11 19:46:39.565664+00
+37637281-99ec-4c49-aefd-365385d622ee,Vietnamese koriander,groente,Kruiden,vitamine K,2026-01-11 19:46:55.206026+00
+6137f6a3-aa2c-4969-895c-ce5378a74920,Vijg,fruit,Exotische vruchten,vezels,2026-01-11 19:46:39.442382+00
+c5599de8-0655-4c3e-824c-5a049976590e,Vijgenbladpompoen,groente,Pompoenachtigen,vitamine A,2026-01-11 11:57:01.061778+00
+456c69d6-a162-4a1d-a976-e9e9b2f06f00,Vleugelboon,groente,Peulvruchten,antioxidanten,2026-01-11 11:57:01.061778+00
+292727f0-f465-45e8-9c0d-566f399a738e,Wasabi,groente,Knolgewassen,isothiocyanaten,2026-01-11 19:46:52.387722+00
+a3712e70-88c7-4f48-85ca-deca0eae1dde,Waspeer,fruit,Pitvruchten,vitamine C,2026-01-11 19:46:44.882849+00
+e5a6b7f4-0781-4031-b487-41bbb04c6100,Waterkers,groente,Kiemgroenten,vitamine K,2026-01-11 19:46:34.555006+00
+3286f069-c64b-498c-8b87-19a4a307c404,Watermeloen,fruit,Meloenen,lycopeen,2026-01-11 19:46:40.427461+00
+22bc4730-db9c-4482-8528-5c19e9eecf75,Wilde knoflook,groente,Kruiden,vitamine C,2026-01-11 19:46:56.998627+00
+43bb629b-f540-4909-8781-af24dd3f17a1,Witlof,groente,Bladgroenten,antioxidanten,2026-01-11 11:57:01.061778+00
+09bf11b4-357f-4972-bc75-8867817aa024,Witte asperge,groente,Stengelgroenten,foliumzuur,2026-01-11 19:46:46.147974+00
+85708f52-381b-43e0-9346-79c16efd9e27,Witte bes,fruit,Bessen,vitamine C,2026-01-11 19:46:37.609755+00
+f4bcbc27-e030-404d-83e9-1c48427c1461,Witte bonen ,groente,Peulvruchten,,2026-01-12 10:52:48.617026+00
+107e1142-7aef-4c7c-aa0d-760590f813ac,Witte kool,groente,Koolsoorten,vitamine C,2026-01-11 19:46:27.958312+00
+95bfc84b-17b4-4f84-b458-6d3233f015dd,Witte moerbei,fruit,Bessen,antioxidanten,2026-01-11 19:46:38.440754+00
+ad22ddf8-684c-4834-99bb-664cdc398aea,Witte sapote,fruit,Exotische vruchten,vitamine C,2026-01-11 19:46:44.993054+00
+7b2c8f9a-e8db-408a-b975-3fbbd3631cf9,Witte ui,groente,Uiengewassen,vitamine C,2026-01-11 19:46:31.593492+00
+515fef1b-0646-4ff6-86c5-cab5326602a4,Witte wortel,groente,Knolgewassen,vezels,2026-01-11 19:46:34.991629+00
+53601fb5-8b0c-426a-a35d-3688ea4d4876,Wittekool,groente,Koolsoorten,antioxidanten,2026-01-11 11:57:01.061778+00
+698a0ebf-34d5-42ca-9a0e-cb88569e248e,Wortel,groente,Knolgewassen,vitamine A,2026-01-11 11:57:01.061778+00
+6aca5807-b5f1-4b0c-a353-cb5398691e79,Wortelen,groente,Knolgewassen,vitamine A,2026-01-11 19:46:34.659875+00
+8a6e07f6-ebea-438c-ba3c-97d486208e35,Wortelpeterselie,groente,Knolgewassen,vitamine A,2026-01-11 11:57:01.061778+00
+1c0f725c-56cc-45d1-8faa-d2a4e3df4657,Yaca,fruit,Exotische vruchten,vezels,2026-01-11 19:46:45.095697+00
+4498eb1e-daa2-46bc-a10d-c04504326b05,Yacón,groente,Knolgewassen,antioxidanten,2026-01-11 11:57:01.061778+00
+f63f34aa-aa68-4a22-a71d-85a39f7724fa,Yam wortel,groente,Knolgewassen,kalium,2026-01-11 19:46:47.203573+00
+625f162c-0c80-4fed-89e4-d411246f039f,Yuzu,fruit,Citrusvruchten,vitamine C,2026-01-11 19:46:35.547448+00
+14d217c5-0392-46a7-a134-d8c59b367198,Zeekool,groente,Koolsoorten,antioxidanten,2026-01-11 11:57:01.061778+00
+407c7845-142c-49c7-98ad-6a6fa76c817d,Zevenblad,groente,Kruiden,antioxidanten,2026-01-11 19:46:52.621392+00
+0b529f32-d02b-452d-a663-e388c0eb134f,Zoete aardappel,groente,Knolgewassen,vitamine A,2026-01-11 19:46:34.00763+00
+05c6787e-96ab-4a37-98c3-8ff99ca17f95,Zonnebloempitten,groente,Specerijen,vitamine E,2026-01-11 19:46:54.279058+00
+12f04c57-7ad3-4396-aebe-1f991262acdd,Zonnewortel,groente,Knolgewassen,vitamine A,2026-01-11 11:57:01.061778+00
+8b05b441-574a-45ab-b627-d7ea90ce461a,Zuring,groente,Bladgroenten,vezels,2026-01-11 11:57:01.061778+00
+24940b31-1f64-4ad8-82cb-cc7bc40977c4,Zwarte bes,fruit,Bessen,vitamine C,2026-01-11 19:46:37.460284+00
