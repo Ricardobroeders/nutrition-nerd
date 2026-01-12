@@ -85,7 +85,7 @@ export async function updateUserStreaksFromWeeklyStats(userId: string) {
     // Calculate current streak (from most recent week backwards)
     let currentStreak = 0;
     for (const stat of weeklyStats) {
-      if (stat.unique_items_count >= 25) {
+      if (stat.unique_items_count >= 30) {
         currentStreak++;
       } else {
         break; // Stop at first week that didn't meet goal
@@ -98,7 +98,7 @@ export async function updateUserStreaksFromWeeklyStats(userId: string) {
 
     // Reverse to go chronologically
     for (const stat of weeklyStats.reverse()) {
-      if (stat.unique_items_count >= 25) {
+      if (stat.unique_items_count >= 30) {
         tempStreak++;
         longestStreak = Math.max(longestStreak, tempStreak);
       } else {

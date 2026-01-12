@@ -116,7 +116,7 @@ async function updateUserStreaks(userId: string, displayName: string) {
   // Calculate current streak (from most recent week backwards)
   let currentStreak = 0;
   for (const stat of weeklyStats) {
-    if (stat.unique_items_count >= 25) {
+    if (stat.unique_items_count >= 30) {
       currentStreak++;
     } else {
       break;
@@ -128,7 +128,7 @@ async function updateUserStreaks(userId: string, displayName: string) {
   let tempStreak = 0;
 
   for (const stat of weeklyStats.slice().reverse()) {
-    if (stat.unique_items_count >= 25) {
+    if (stat.unique_items_count >= 30) {
       tempStreak++;
       longestStreak = Math.max(longestStreak, tempStreak);
     } else {

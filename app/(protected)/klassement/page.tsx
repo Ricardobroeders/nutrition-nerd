@@ -92,7 +92,7 @@ export default function KlassementPage() {
         <CardHeader>
           <CardTitle>Wekelijkse Streaks</CardTitle>
           <CardDescription>
-            Aantal keer dat het weekdoel van 25 unieke items behaald is
+            Aantal keer dat het weekdoel van 30 unieke items behaald is
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -129,7 +129,7 @@ export default function KlassementPage() {
             <div>
               <p className="font-medium">Streaks & Prestaties</p>
               <p className="text-gray-600">
-                Haal 25+ unieke items per week om je streak te verhogen en een topositie te behouden.
+                Haal 30+ unieke items per week om je streak te verhogen en een topositie te behouden.
               </p>
             </div>
           </div>

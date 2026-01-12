@@ -260,15 +260,15 @@ export default function IntakePage() {
               <div className="mb-4 p-4 bg-blue-50 border border-blue-200 rounded-lg">
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="font-semibold text-blue-900">Weekdoel: 25 unieke items</p>
+                    <p className="font-semibold text-blue-900">Weekdoel: 30 unieke items</p>
                     <p className="text-sm text-blue-700 mt-1">
-                      {weeklyUniqueCount >= 25
+                      {weeklyUniqueCount >= 30
                         ? '🎉 Doel behaald!'
-                        : `Nog ${25 - weeklyUniqueCount} items te gaan`}
+                        : `Nog ${30 - weeklyUniqueCount} items te gaan`}
                     </p>
                   </div>
                   <div className="text-3xl font-bold text-blue-900">
-                    {weeklyUniqueCount}/25
+                    {weeklyUniqueCount}/30
                   </div>
                 </div>
               </div>

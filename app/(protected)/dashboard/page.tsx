@@ -70,7 +70,7 @@ export default function DashboardPage() {
     const uniqueIds = new Set(weekIntake.map((i) => i.food_item_id));
     return uniqueIds.size;
   }, [intakeData, monday]);
-  const weeklyProgress = (weeklyUniqueCount / 25) * 100;
+  const weeklyProgress = (weeklyUniqueCount / 30) * 100;
 
   if (loading) {
     return (
@@ -101,7 +101,7 @@ export default function DashboardPage() {
             currentStreak={userProfile?.current_streak || 0}
             longestStreak={userProfile?.longest_streak || 0}
             weeklyProgress={weeklyUniqueCount}
-            weeklyGoal={25}
+            weeklyGoal={30}
           />
         </div>
 
@@ -109,20 +109,20 @@ export default function DashboardPage() {
         <Card>
           <CardHeader>
             <CardTitle className="text-lg">Weekdoel</CardTitle>
-            <CardDescription>25 unieke items</CardDescription>
+            <CardDescription>30 unieke items</CardDescription>
           </CardHeader>
           <CardContent>
             <div className="space-y-2">
               <div className="flex justify-between text-sm">
                 <span className="text-gray-600">Voortgang</span>
                 <span className="font-semibold text-emerald-700">
-                  {weeklyUniqueCount}/25
+                  {weeklyUniqueCount}/30
                 </span>
               </div>
               <Progress value={weeklyProgress} className="h-3" />
               <p className="text-xs text-gray-500 text-center">
-                {25 - weeklyUniqueCount > 0
-                  ? `Nog ${25 - weeklyUniqueCount} items te gaan!`
+                {30 - weeklyUniqueCount > 0
+                  ? `Nog ${30 - weeklyUniqueCount} items te gaan!`
                   : 'Doel behaald! 🎉'}
               </p>
             </div>

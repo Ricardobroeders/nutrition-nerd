@@ -11,7 +11,7 @@ Een Nederlandse web applicatie voor het bijhouden van dagelijkse groente en frui
 - ✅ **Mijn Intake**: Kalender weergave met dagelijkse intake geschiedenis
 - ✅ **Klassement**: Wekelijkse en overall ranglijst top 20
 - ✅ **Profiel**: Persoonlijke statistieken en account beheer
-- ✅ **Streak Systeem**: 🔥 Track wekelijkse streaks met 25+ unieke items doel
+- ✅ **Streak Systeem**: 🔥 Track wekelijkse streaks met 30+ unieke items doel
 - ✅ **Responsive Design**: Mobile-first met dedicated navigatie
 
 ### Toekomstige Features (Phase 2 - Supabase Integration)
@@ -80,7 +80,7 @@ nutrition-nerd/
 ## 🎯 Hoe het werkt
 
 ### Streak Systeem
-- **Doel**: 25+ unieke groente/fruit items per week
+- **Doel**: 30+ unieke groente/fruit items per week
 - **Streak +1**: Bij het behalen van het weekdoel
 - **Streak reset**: Bij missen van het weekdoel
 - **Week start**: Maandag 00:00

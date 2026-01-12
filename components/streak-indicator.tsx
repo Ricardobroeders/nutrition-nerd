@@ -12,7 +12,7 @@ export function StreakIndicator({
   currentStreak,
   longestStreak,
   weeklyProgress,
-  weeklyGoal = 25,
+  weeklyGoal = 30,
 }: StreakIndicatorProps) {
   const isAtRisk = weeklyProgress < weeklyGoal && currentStreak > 0;
   const hasReachedGoal = weeklyProgress >= weeklyGoal;

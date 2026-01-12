@@ -262,10 +262,10 @@ export async function getWeeklyStreaksLeaderboard() {
     return [];
   }
 
-  // Count weeks where user achieved 25+ unique items
+  // Count weeks where user achieved 30+ unique items
   const leaderboard = data.map(user => {
     const weeksCompleted = user.weekly_stats.filter(
-      week => week.unique_items_count >= 25
+      week => week.unique_items_count >= 30
     ).length;
     return {
       id: user.id,

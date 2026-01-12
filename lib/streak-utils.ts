@@ -59,8 +59,8 @@ export function calculateWeeklyStats(
 
 /**
  * Calculate current streak based on weekly stats
- * Streak increments when user reaches 25+ unique items in a week
- * Streak resets to 0 if user fails to meet 25+ items in any week
+ * Streak increments when user reaches 30+ unique items in a week
+ * Streak resets to 0 if user fails to meet 30+ items in any week
  */
 export function calculateStreak(weeklyStats: WeeklyStats[]): {
   current_streak: number;
@@ -81,7 +81,7 @@ export function calculateStreak(weeklyStats: WeeklyStats[]): {
 
   // Calculate current streak (from most recent week backwards)
   for (const stat of sortedStats) {
-    if (stat.unique_items_count >= 25) {
+    if (stat.unique_items_count >= 30) {
       currentStreak++;
     } else {
       break;
@@ -90,7 +90,7 @@ export function calculateStreak(weeklyStats: WeeklyStats[]): {
 
   // Calculate longest streak
   for (const stat of sortedStats.reverse()) {
-    if (stat.unique_items_count >= 25) {
+    if (stat.unique_items_count >= 30) {
       tempStreak++;
       longestStreak = Math.max(longestStreak, tempStreak);
     } else {
@@ -103,15 +103,15 @@ export function calculateStreak(weeklyStats: WeeklyStats[]): {
 
 /**
  * Check if user is at risk of losing their streak
- * Returns true if current week has < 25 items and it's past Wednesday
+ * Returns true if current week has < 30 items and it's past Wednesday
  */
 export function isStreakAtRisk(currentWeekUniqueCount: number): boolean {
   const today = new Date();
   const dayOfWeek = today.getDay(); // 0 = Sunday, 1 = Monday, ..., 6 = Saturday
 
-  // If it's past Wednesday (day 3) and still under 25, user is at risk
+  // If it's past Wednesday (day 3) and still under 30, user is at risk
   const isPastWednesday = dayOfWeek >= 3;
-  const isBelowGoal = currentWeekUniqueCount < 25;
+  const isBelowGoal = currentWeekUniqueCount < 30;
 
   return isPastWednesday && isBelowGoal;
 }
@@ -119,7 +119,7 @@ export function isStreakAtRisk(currentWeekUniqueCount: number): boolean {
 /**
  * Calculate weekly progress percentage
  */
-export function getWeeklyProgress(uniqueCount: number, goal: number = 25): number {
+export function getWeeklyProgress(uniqueCount: number, goal: number = 30): number {
   return Math.min(100, Math.round((uniqueCount / goal) * 100));
 }
 
