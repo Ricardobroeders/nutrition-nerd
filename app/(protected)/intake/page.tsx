@@ -4,7 +4,7 @@ import { useState, useMemo, useEffect } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { FoodSearch } from '@/components/food-search';
-import { getCurrentUser, getFoodItems, getUserIntake, addIntake, removeIntake } from '@/lib/supabase';
+import { getCurrentUser, getFoodItems, getUserIntake, addIntake, removeIntake, updateWeeklyStats } from '@/lib/supabase';
 import { FoodItem, UserIntake } from '@/types';
 import { useRouter } from 'next/navigation';
 import { Button } from '@/components/ui/button';
@@ -104,10 +104,21 @@ export default function IntakePage() {
         ...data,
         food_item: item,
       };
-      setIntakeData([...intakeData, newIntake]);
+      const updatedIntakeData = [...intakeData, newIntake];
+      setIntakeData(updatedIntakeData);
       setLastAddedItem(item.name_nl);
       setShowSuccess(true);
       setTimeout(() => setShowSuccess(false), 2000);
+
+      // Update weekly stats after adding item
+      const weekStart = formatDate(monday);
+      const weekIntake = updatedIntakeData.filter((i) => {
+        const intakeDate = new Date(i.intake_date);
+        return intakeDate >= monday;
+      });
+      const uniqueItemsThisWeek = new Set(weekIntake.map((i) => i.food_item_id)).size;
+
+      await updateWeeklyStats(user.id, weekStart, uniqueItemsThisWeek);
     }
   };
 
@@ -119,7 +130,20 @@ export default function IntakePage() {
       return;
     }
 
-    setIntakeData(intakeData.filter((intake) => intake.id !== intakeId));
+    const updatedIntakeData = intakeData.filter((intake) => intake.id !== intakeId);
+    setIntakeData(updatedIntakeData);
+
+    // Update weekly stats after removing item
+    if (user) {
+      const weekStart = formatDate(monday);
+      const weekIntake = updatedIntakeData.filter((i) => {
+        const intakeDate = new Date(i.intake_date);
+        return intakeDate >= monday;
+      });
+      const uniqueItemsThisWeek = new Set(weekIntake.map((i) => i.food_item_id)).size;
+
+      await updateWeeklyStats(user.id, weekStart, uniqueItemsThisWeek);
+    }
   };
 
   if (loading) {
