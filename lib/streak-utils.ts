@@ -1,13 +1,21 @@
 import { UserIntake, WeeklyStats } from '@/types';
 
 /**
- * Get the Monday of a given week
+ * Get the Monday of the current week
+ * If today is Monday, returns today. Otherwise returns the most recent Monday.
  */
 export function getMonday(date: Date): Date {
   const d = new Date(date);
-  const day = d.getDay();
-  const diff = d.getDate() - day + (day === 0 ? -6 : 1);
-  return new Date(d.setDate(diff));
+  d.setHours(0, 0, 0, 0);
+  const day = d.getDay(); // 0 = Sunday, 1 = Monday, ..., 6 = Saturday
+
+  // If today is Monday (1), keep it (subtract 0 days)
+  // If today is Sunday (0), go back 6 days to previous Monday
+  // Otherwise, go back to the most recent Monday
+  const daysToSubtract = day === 0 ? 6 : day - 1;
+
+  d.setDate(d.getDate() - daysToSubtract);
+  return d;
 }
 
 /**

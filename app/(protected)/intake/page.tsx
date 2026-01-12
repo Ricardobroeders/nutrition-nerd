@@ -12,11 +12,15 @@ import { X } from 'lucide-react';
 
 function getMonday(date: Date): Date {
   const d = new Date(date);
-  const day = d.getDay();
-  const diff = d.getDate() - day + (day === 0 ? -6 : 1);
-  d.setDate(diff);
-  // Reset time to start of day to avoid comparison issues
   d.setHours(0, 0, 0, 0);
+  const day = d.getDay(); // 0 = Sunday, 1 = Monday, ..., 6 = Saturday
+
+  // If today is Monday (1), keep it
+  // If today is Sunday (0), go back 6 days to previous Monday
+  // Otherwise, go back to the most recent Monday
+  const daysToSubtract = day === 0 ? 6 : day - 1;
+
+  d.setDate(d.getDate() - daysToSubtract);
   return d;
 }
 
