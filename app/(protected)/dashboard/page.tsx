@@ -12,7 +12,10 @@ function getMonday(date: Date): Date {
   const d = new Date(date);
   const day = d.getDay();
   const diff = d.getDate() - day + (day === 0 ? -6 : 1);
-  return new Date(d.setDate(diff));
+  d.setDate(diff);
+  // Reset time to start of day to avoid comparison issues
+  d.setHours(0, 0, 0, 0);
+  return d;
 }
 
 function formatDate(date: Date): string {
@@ -64,12 +67,11 @@ export default function DashboardPage() {
   // Calculate this week's unique items
   const weeklyUniqueCount = useMemo(() => {
     const weekIntake = intakeData.filter((i) => {
-      const intakeDate = new Date(i.intake_date);
-      return intakeDate >= monday;
+      return i.intake_date >= weekStart;
     });
     const uniqueIds = new Set(weekIntake.map((i) => i.food_item_id));
     return uniqueIds.size;
-  }, [intakeData, monday]);
+  }, [intakeData, weekStart]);
   const weeklyProgress = (weeklyUniqueCount / 30) * 100;
 
   if (loading) {

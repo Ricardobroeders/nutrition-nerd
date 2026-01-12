@@ -14,7 +14,10 @@ function getMonday(date: Date): Date {
   const d = new Date(date);
   const day = d.getDay();
   const diff = d.getDate() - day + (day === 0 ? -6 : 1);
-  return new Date(d.setDate(diff));
+  d.setDate(diff);
+  // Reset time to start of day to avoid comparison issues
+  d.setHours(0, 0, 0, 0);
+  return d;
 }
 
 function formatDate(date: Date): string {
@@ -76,9 +79,9 @@ export default function IntakePage() {
 
   // Calculate this week's intake
   const weeklyIntake = useMemo(() => {
+    const weekStartStr = formatDate(monday);
     return intakeData.filter((i) => {
-      const intakeDate = new Date(i.intake_date);
-      return intakeDate >= monday;
+      return i.intake_date >= weekStartStr;
     });
   }, [intakeData, monday]);
 
@@ -113,8 +116,7 @@ export default function IntakePage() {
       // Update weekly stats after adding item
       const weekStart = formatDate(monday);
       const weekIntake = updatedIntakeData.filter((i) => {
-        const intakeDate = new Date(i.intake_date);
-        return intakeDate >= monday;
+        return i.intake_date >= weekStart;
       });
       const uniqueItemsThisWeek = new Set(weekIntake.map((i) => i.food_item_id)).size;
 
@@ -137,8 +139,7 @@ export default function IntakePage() {
     if (user) {
       const weekStart = formatDate(monday);
       const weekIntake = updatedIntakeData.filter((i) => {
-        const intakeDate = new Date(i.intake_date);
-        return intakeDate >= monday;
+        return i.intake_date >= weekStart;
       });
       const uniqueItemsThisWeek = new Set(weekIntake.map((i) => i.food_item_id)).size;
 
