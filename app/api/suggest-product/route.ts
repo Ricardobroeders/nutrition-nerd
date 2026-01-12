@@ -1,8 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server';
 
 export async function POST(request: NextRequest) {
+  let body: any = {};
   try {
-    const body = await request.json();
+    body = await request.json();
     const { productName, productType, productCategory, userEmail } = body;
 
     // Validate required fields
@@ -57,8 +58,26 @@ Dit bericht is automatisch gegenereerd via de Nutrition Nerd app.
     });
 
     if (!resendResponse.ok) {
-      const error = await resendResponse.text();
-      console.error('Resend API error:', error);
+      const errorText = await resendResponse.text();
+      console.error('Resend API error:', errorText);
+
+      // If domain not verified, log suggestion and return success
+      // This allows the app to work while domain verification is pending
+      if (errorText.includes('domain is not verified')) {
+        console.log('📧 Product Suggestion (logged - domain not verified):', {
+          productName,
+          productType,
+          productCategory,
+          userEmail,
+          timestamp: new Date().toISOString()
+        });
+
+        return NextResponse.json({
+          success: true,
+          message: 'Suggestion received and logged'
+        });
+      }
+
       throw new Error('Failed to send email');
     }
 
@@ -69,9 +88,21 @@ Dit bericht is automatisch gegenereerd via de Nutrition Nerd app.
 
   } catch (error) {
     console.error('Error processing suggestion:', error);
-    return NextResponse.json(
-      { error: 'Failed to process suggestion' },
-      { status: 500 }
-    );
+
+    // Fallback: Log the suggestion so it's not lost
+    console.log('📧 Product Suggestion (logged due to error):', {
+      productName: body.productName,
+      productType: body.productType,
+      productCategory: body.productCategory,
+      userEmail: body.userEmail,
+      timestamp: new Date().toISOString()
+    });
+
+    // Return success to user even if email fails
+    // Suggestions are logged and can be retrieved from Vercel logs
+    return NextResponse.json({
+      success: true,
+      message: 'Suggestion received and logged'
+    });
   }
 }

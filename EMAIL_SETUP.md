@@ -26,21 +26,35 @@ Add the API key to your `.env.local` file:
 RESEND_API_KEY=re_your_api_key_here
 ```
 
-### 4. Verify Domain (Production Only)
+### 4. Verify Domain (Production - REQUIRED)
 
-For production deployment, you need to verify your domain:
+**IMPORTANT:** The app is currently set up to gracefully handle unverified domains by logging suggestions to Vercel logs. However, to actually receive emails, you MUST verify your domain.
+
+#### Steps to verify nutritionnerd.app:
 
 1. Go to [Domains](https://resend.com/domains) in Resend
 2. Click "Add Domain"
-3. Enter your domain (e.g., `nutritionnerd.app`)
-4. Follow the instructions to add DNS records
-5. Wait for verification (usually takes a few minutes)
+3. Enter your domain: `nutritionnerd.app`
+4. Resend will provide DNS records that need to be added to your domain registrar (e.g., Vercel, Namecheap, GoDaddy)
 
-Once verified, update the API route to use your domain:
+5. Add the following DNS records (exact values will be shown in Resend):
+   - **TXT record** for domain verification
+   - **MX records** for receiving bounces
+   - **DKIM records** for email authentication
 
-```typescript
-from: 'Nutrition Nerd <noreply@nutritionnerd.app>',
-```
+6. Wait for verification (usually takes 5-30 minutes, sometimes up to 24 hours)
+
+7. Once verified, the API will automatically start sending real emails
+
+**Current Behavior (Unverified Domain):**
+- Form submissions work without errors
+- Suggestions are logged to Vercel deployment logs
+- You can view submissions in: Vercel Dashboard → Deployments → Functions → Logs
+- Search for "📧 Product Suggestion" in the logs
+
+**After Domain Verification:**
+- Emails will be sent to info@ricardobroeders.nl
+- No code changes needed - it will work automatically
 
 ### 5. Development Mode
 
