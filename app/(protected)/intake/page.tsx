@@ -10,6 +10,50 @@ import { useRouter } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import { X } from 'lucide-react';
 
+// Emoji mapping based on category
+const categoryEmojiMap: Record<string, string> = {
+  // Fruit categories
+  'Tropische vruchten': '🥥',
+  'Citrusvruchten': '🍊',
+  'Steenvruchten': '🍑',
+  'Pitvruchten': '🍎',
+  'Bessenfruit': '🍓',
+  'Exotische vruchten': '🥭',
+  'Meloensoorten': '🍉',
+
+  // Groente categories
+  'Koolsoorten': '🥬',
+  'Bladgroenten': '🥬',
+  'Vruchtgroenten': '🍅',
+  'Wortelgroenten': '🥕',
+  'Knolgewassen': '🥔',
+  'Peulvruchten': '🫘',
+  'Stengelgroenten': '🌱',
+  'Uiengewassen': '🧅',
+  'Paddenstoelen': '🍄',
+  'Kruiden': '🌿',
+  'Specerijen': '🌶️',
+  'Noten': '🥜',
+  'Zaden': '🌰',
+
+  // Fallback defaults
+  'fruit': '🍎',
+  'groente': '🥦',
+};
+
+// Helper function to get emoji based on category or type
+function getEmojiForItem(category?: string | null, type?: string): string {
+  // First try to match by category
+  if (category && categoryEmojiMap[category]) {
+    return categoryEmojiMap[category];
+  }
+  // Fallback to type
+  if (type && categoryEmojiMap[type]) {
+    return categoryEmojiMap[type];
+  }
+  return '🍏';
+}
+
 function getMonday(date: Date): Date {
   const d = new Date(date);
   // Get the local day of week BEFORE setting time to avoid timezone issues
@@ -233,6 +277,7 @@ export default function IntakePage() {
             foodItems={foodItems}
             onAdd={handleAddItem}
             addedItemIds={todayItemIds}
+            showFilters={false}
           />
         </CardContent>
       </Card>
@@ -262,7 +307,7 @@ export default function IntakePage() {
                     >
                       <div className="flex items-center gap-3">
                         <span className="text-2xl">
-                          {intake.food_item?.type === 'fruit' ? '🍎' : '🥦'}
+                          {getEmojiForItem(intake.food_item?.category, intake.food_item?.type)}
                         </span>
                         <div>
                           <p className="font-medium">{intake.food_item?.name_nl}</p>
@@ -328,7 +373,7 @@ export default function IntakePage() {
                     >
                       <div className="flex items-center gap-3">
                         <span className="text-2xl">
-                          {intake.food_item?.type === 'fruit' ? '🍎' : '🥦'}
+                          {getEmojiForItem(intake.food_item?.category, intake.food_item?.type)}
                         </span>
                         <div>
                           <p className="font-medium">{intake.food_item?.name_nl}</p>

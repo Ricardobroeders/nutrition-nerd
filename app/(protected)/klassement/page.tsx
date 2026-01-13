@@ -31,6 +31,7 @@ export default function KlassementPage() {
         const allTimeEntries: LeaderboardEntry[] = allTimeData.map(user => ({
           id: user.id,
           display_name: user.display_name,
+          avatar_url: user.avatar_url,
           score: user.total_unique_items,
           is_current_user: user.id === currentUser.id,
         }));
@@ -41,6 +42,7 @@ export default function KlassementPage() {
         const averageWeeklyEntries: LeaderboardEntry[] = averageWeeklyData.map(user => ({
           id: user.id,
           display_name: user.display_name,
+          avatar_url: user.avatar_url,
           score: user.average_weekly_items,
           is_current_user: user.id === currentUser.id,
         }));
@@ -51,6 +53,7 @@ export default function KlassementPage() {
         const weeklyStreaksEntries: LeaderboardEntry[] = weeklyStreaksData.map(user => ({
           id: user.id,
           display_name: user.display_name,
+          avatar_url: user.avatar_url,
           score: user.weeks_completed,
           is_current_user: user.id === currentUser.id,
         }));

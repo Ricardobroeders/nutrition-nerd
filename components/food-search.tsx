@@ -15,6 +15,47 @@ interface FoodSearchProps {
   showFilters?: boolean;
 }
 
+// Emoji mapping based on category
+const categoryEmojiMap: Record<string, string> = {
+  // Fruit categories
+  'Tropische vruchten': '🥥',
+  'Citrusvruchten': '🍊',
+  'Steenvruchten': '🍑',
+  'Pitvruchten': '🍎',
+  'Bessenfruit': '🍓',
+  'Exotische vruchten': '🥭',
+  'Meloensoorten': '🍉',
+
+  // Groente categories
+  'Koolsoorten': '🥬',
+  'Bladgroenten': '🥬',
+  'Vruchtgroenten': '🍅',
+  'Wortelgroenten': '🥕',
+  'Knolgewassen': '🥔',
+  'Peulvruchten': '🫘',
+  'Stengelgroenten': '🌱',
+  'Uiengewassen': '🧅',
+  'Paddenstoelen': '🍄',
+  'Kruiden': '🌿',
+  'Specerijen': '🌶️',
+  'Noten': '🥜',
+  'Zaden': '🌰',
+
+  // Fallback defaults
+  'fruit': '🍎',
+  'groente': '🥦',
+};
+
+// Helper function to get emoji based on category or type
+function getEmojiForItem(item: FoodItem): string {
+  // First try to match by category
+  if (item.category && categoryEmojiMap[item.category]) {
+    return categoryEmojiMap[item.category];
+  }
+  // Fallback to type
+  return categoryEmojiMap[item.type] || '🍏';
+}
+
 export function FoodSearch({
   foodItems,
   onAdd,
@@ -98,14 +139,19 @@ export function FoodSearch({
                 <CardContent className="p-4">
                   <div className="flex items-center justify-between">
                     <div className="flex-1">
-                      <h3 className="font-medium">{item.name_nl}</h3>
+                      <div className="flex items-center gap-2">
+                        <span className="text-xl">{getEmojiForItem(item)}</span>
+                        <h3 className="font-medium">{item.name_nl}</h3>
+                      </div>
                       <div className="flex gap-2 mt-1">
                         <Badge variant="outline" className="text-xs">
                           {item.type === 'fruit' ? '🍎 Fruit' : '🥦 Groente'}
                         </Badge>
-                        <Badge variant="secondary" className="text-xs">
-                          {item.category}
-                        </Badge>
+                        {item.category && (
+                          <Badge variant="secondary" className="text-xs">
+                            {item.category}
+                          </Badge>
+                        )}
                       </div>
                     </div>
                     <Button

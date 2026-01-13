@@ -1,11 +1,12 @@
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Avatar, AvatarFallback } from '@/components/ui/avatar';
+import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
 import { Trophy, Medal } from 'lucide-react';
 
 export interface LeaderboardEntry {
   id: string;
   display_name: string;
+  avatar_url?: string | null;
   score: number;
   is_current_user?: boolean;
 }
@@ -48,6 +49,9 @@ export function LeaderboardTable({ entries, scoreLabel }: LeaderboardTableProps)
 
               {/* Avatar */}
               <Avatar className="w-8 h-8">
+                {entry.avatar_url && (
+                  <AvatarImage src={entry.avatar_url} alt={entry.display_name} />
+                )}
                 <AvatarFallback className="bg-emerald-600 text-white font-semibold">
                   {getInitials(entry.display_name)}
                 </AvatarFallback>

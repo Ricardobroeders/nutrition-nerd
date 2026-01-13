@@ -223,6 +223,7 @@ export async function getAllTimeLeaderboard() {
     .select(`
       id,
       display_name,
+      avatar_url,
       user_intake(food_item_id)
     `)
     .order('display_name', { ascending: true });
@@ -238,6 +239,7 @@ export async function getAllTimeLeaderboard() {
     return {
       id: user.id,
       display_name: user.display_name,
+      avatar_url: user.avatar_url,
       total_unique_items: uniqueItems.size,
     };
   });
@@ -253,6 +255,7 @@ export async function getAverageWeeklyLeaderboard() {
     .select(`
       id,
       display_name,
+      avatar_url,
       weekly_stats(unique_items_count, week_start_date)
     `)
     .order('display_name', { ascending: true });
@@ -287,6 +290,7 @@ export async function getAverageWeeklyLeaderboard() {
     return {
       id: user.id,
       display_name: user.display_name,
+      avatar_url: user.avatar_url,
       average_weekly_items: parseFloat(average.toFixed(2)),
       weeks_tracked: completedWeeks.length,
     };
@@ -303,6 +307,7 @@ export async function getWeeklyStreaksLeaderboard() {
     .select(`
       id,
       display_name,
+      avatar_url,
       weekly_stats(unique_items_count)
     `)
     .order('display_name', { ascending: true });
@@ -320,6 +325,7 @@ export async function getWeeklyStreaksLeaderboard() {
     return {
       id: user.id,
       display_name: user.display_name,
+      avatar_url: user.avatar_url,
       weeks_completed: weeksCompleted,
     };
   });
