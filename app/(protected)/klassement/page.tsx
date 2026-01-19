@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { LeaderboardTable, LeaderboardEntry } from '@/components/leaderboard-table';
-import { getAllTimeLeaderboard, getAverageWeeklyLeaderboard, getWeeklyStreaksLeaderboard, getCurrentUser } from '@/lib/supabase';
+import { getAllTimeLeaderboard, getAverageWeeklyLeaderboard, getWeeklyStreaksLeaderboard, getWeeklyHighscoreLeaderboard, getCurrentUser } from '@/lib/supabase';
 import { useRouter } from 'next/navigation';
 
 export default function KlassementPage() {
@@ -14,6 +14,7 @@ export default function KlassementPage() {
   const [allTimeLeaderboard, setAllTimeLeaderboard] = useState<LeaderboardEntry[]>([]);
   const [averageWeeklyLeaderboard, setAverageWeeklyLeaderboard] = useState<LeaderboardEntry[]>([]);
   const [weeklyStreaksLeaderboard, setWeeklyStreaksLeaderboard] = useState<LeaderboardEntry[]>([]);
+  const [weeklyHighscoreLeaderboard, setWeeklyHighscoreLeaderboard] = useState<LeaderboardEntry[]>([]);
 
   useEffect(() => {
     async function loadLeaderboards() {
@@ -55,6 +56,16 @@ export default function KlassementPage() {
           is_current_user: user.id === currentUser.id,
         }));
         setWeeklyStreaksLeaderboard(weeklyStreaksEntries);
+
+        // Load weekly highscore leaderboard
+        const weeklyHighscoreData = await getWeeklyHighscoreLeaderboard();
+        const weeklyHighscoreEntries: LeaderboardEntry[] = weeklyHighscoreData.map(user => ({
+          id: user.id,
+          display_name: user.display_name,
+          score: user.weekly_items,
+          is_current_user: user.id === currentUser.id,
+        }));
+        setWeeklyHighscoreLeaderboard(weeklyHighscoreEntries);
       } catch (error) {
         console.error('Error loading leaderboards:', error);
       } finally {
@@ -99,6 +110,22 @@ export default function KlassementPage() {
             <AccordionContent>
               <CardContent className="p-4">
                 <LeaderboardTable entries={allTimeLeaderboard} scoreLabel="totaal uniek" />
+              </CardContent>
+            </AccordionContent>
+          </AccordionItem>
+        </Card>
+
+        {/* Weekly highscore leaderboard */}
+        <Card>
+          <AccordionItem value="weekly-highscore" className="border-0">
+            <CardHeader className="p-4">
+              <AccordionTrigger className="hover:no-underline py-2">
+                <CardTitle>Wekelijkse Highscore</CardTitle>
+              </AccordionTrigger>
+            </CardHeader>
+            <AccordionContent>
+              <CardContent className="p-4">
+                <LeaderboardTable entries={weeklyHighscoreLeaderboard} scoreLabel="deze week" />
               </CardContent>
             </AccordionContent>
           </AccordionItem>

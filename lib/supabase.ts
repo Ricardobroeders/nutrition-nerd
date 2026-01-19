@@ -297,13 +297,15 @@ export async function getAverageWeeklyLeaderboard() {
 }
 
 // Helper function to get weekly streaks leaderboard
+// A streak counts consecutive completed weeks (Monday-Sunday) where user achieved 30+ unique items
+// The current week (still in progress) is excluded from streak calculations
 export async function getWeeklyStreaksLeaderboard() {
   const { data, error } = await supabase
     .from('users')
     .select(`
       id,
       display_name,
-      weekly_stats(unique_items_count)
+      weekly_stats(unique_items_count, week_start_date)
     `)
     .order('display_name', { ascending: true });
 
@@ -312,18 +314,106 @@ export async function getWeeklyStreaksLeaderboard() {
     return [];
   }
 
-  // Count weeks where user achieved 30+ unique items
+  // Get current week's Monday to exclude it (week still in progress)
+  const now = new Date();
+  now.setHours(0, 0, 0, 0);
+  const currentDay = now.getDay();
+  const daysToSubtract = currentDay === 0 ? 6 : currentDay - 1;
+  const currentMonday = new Date(now);
+  currentMonday.setDate(currentMonday.getDate() - daysToSubtract);
+  const year = currentMonday.getFullYear();
+  const month = String(currentMonday.getMonth() + 1).padStart(2, '0');
+  const day = String(currentMonday.getDate()).padStart(2, '0');
+  const currentWeekStart = `${year}-${month}-${day}`;
+
+  // Calculate current streak for each user (consecutive completed weeks with 30+ items)
   const leaderboard = data.map(user => {
-    const weeksCompleted = user.weekly_stats.filter(
-      week => week.unique_items_count >= 30
-    ).length;
+    // Filter out the current week (still in progress) and sort by date descending
+    const completedWeeks = user.weekly_stats
+      .filter(week => week.week_start_date !== currentWeekStart)
+      .sort((a, b) => new Date(b.week_start_date).getTime() - new Date(a.week_start_date).getTime());
+
+    // Calculate current streak from most recent completed week backwards
+    // Check for consecutive weeks (7 days apart)
+    let currentStreak = 0;
+    let previousWeekStart: Date | null = null;
+
+    for (const week of completedWeeks) {
+      if (week.unique_items_count >= 30) {
+        const weekStart = new Date(week.week_start_date);
+
+        // Check if this week is consecutive to the previous one
+        if (previousWeekStart === null) {
+          // First qualifying week
+          currentStreak = 1;
+        } else {
+          // Check if exactly 7 days apart (consecutive weeks)
+          const daysDiff = (previousWeekStart.getTime() - weekStart.getTime()) / (1000 * 60 * 60 * 24);
+          if (daysDiff === 7) {
+            currentStreak++;
+          } else {
+            // Gap in weeks, stop counting
+            break;
+          }
+        }
+        previousWeekStart = weekStart;
+      } else {
+        // Week with < 30 items breaks the streak
+        break;
+      }
+    }
+
     return {
       id: user.id,
       display_name: user.display_name,
-      weeks_completed: weeksCompleted,
+      weeks_completed: currentStreak,
     };
   });
 
   // Sort by weeks completed descending
   return leaderboard.sort((a, b) => b.weeks_completed - a.weeks_completed);
+}
+
+// Helper function to get weekly highscore leaderboard (current week only)
+export async function getWeeklyHighscoreLeaderboard() {
+  // Get current week's Monday
+  const now = new Date();
+  now.setHours(0, 0, 0, 0);
+  const currentDay = now.getDay();
+  const daysToSubtract = currentDay === 0 ? 6 : currentDay - 1;
+  const currentMonday = new Date(now);
+  currentMonday.setDate(currentMonday.getDate() - daysToSubtract);
+  const year = currentMonday.getFullYear();
+  const month = String(currentMonday.getMonth() + 1).padStart(2, '0');
+  const day = String(currentMonday.getDate()).padStart(2, '0');
+  const currentWeekStart = `${year}-${month}-${day}`;
+
+  const { data, error } = await supabase
+    .from('users')
+    .select(`
+      id,
+      display_name,
+      weekly_stats(unique_items_count, week_start_date)
+    `)
+    .order('display_name', { ascending: true });
+
+  if (error) {
+    console.error('Error getting weekly highscore leaderboard:', error);
+    return [];
+  }
+
+  // Get current week's unique items for each user
+  const leaderboard = data.map(user => {
+    const currentWeekStats = user.weekly_stats.find(
+      week => week.week_start_date === currentWeekStart
+    );
+    return {
+      id: user.id,
+      display_name: user.display_name,
+      weekly_items: currentWeekStats?.unique_items_count || 0,
+    };
+  });
+
+  // Sort by weekly items descending
+  return leaderboard.sort((a, b) => b.weekly_items - a.weekly_items);
 }
