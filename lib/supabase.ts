@@ -1,5 +1,6 @@
 import { createClient } from '@supabase/supabase-js';
 import type { Database } from '@/types/database';
+import { getMonday, formatDate } from '@/lib/streak-utils';
 
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
 const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
@@ -263,17 +264,8 @@ export async function getAverageWeeklyLeaderboard() {
   }
 
   // Get current week's Monday to exclude it from average calculation
-  const now = new Date();
-  now.setHours(0, 0, 0, 0);
-  const currentDay = now.getDay();
-  const daysToSubtract = currentDay === 0 ? 6 : currentDay - 1;
-  const currentMonday = new Date(now);
-  currentMonday.setDate(currentMonday.getDate() - daysToSubtract);
-
-  const year = currentMonday.getFullYear();
-  const month = String(currentMonday.getMonth() + 1).padStart(2, '0');
-  const day = String(currentMonday.getDate()).padStart(2, '0');
-  const currentWeekStart = `${year}-${month}-${day}`;
+  // Use formatDate(getMonday(...)) to match how week_start_date is stored in the DB
+  const currentWeekStart = formatDate(getMonday(new Date()));
 
   // Calculate average unique items per week for each user (excluding current week)
   const leaderboard = data.map(user => {
@@ -315,16 +307,8 @@ export async function getWeeklyStreaksLeaderboard() {
   }
 
   // Get current week's Monday to exclude it (week still in progress)
-  const now = new Date();
-  now.setHours(0, 0, 0, 0);
-  const currentDay = now.getDay();
-  const daysToSubtract = currentDay === 0 ? 6 : currentDay - 1;
-  const currentMonday = new Date(now);
-  currentMonday.setDate(currentMonday.getDate() - daysToSubtract);
-  const year = currentMonday.getFullYear();
-  const month = String(currentMonday.getMonth() + 1).padStart(2, '0');
-  const day = String(currentMonday.getDate()).padStart(2, '0');
-  const currentWeekStart = `${year}-${month}-${day}`;
+  // Use formatDate(getMonday(...)) to match how week_start_date is stored in the DB
+  const currentWeekStart = formatDate(getMonday(new Date()));
 
   // Calculate current streak for each user (consecutive completed weeks with 30+ items)
   const leaderboard = data.map(user => {
@@ -377,16 +361,8 @@ export async function getWeeklyStreaksLeaderboard() {
 // Helper function to get weekly highscore leaderboard (current week only)
 export async function getWeeklyHighscoreLeaderboard() {
   // Get current week's Monday
-  const now = new Date();
-  now.setHours(0, 0, 0, 0);
-  const currentDay = now.getDay();
-  const daysToSubtract = currentDay === 0 ? 6 : currentDay - 1;
-  const currentMonday = new Date(now);
-  currentMonday.setDate(currentMonday.getDate() - daysToSubtract);
-  const year = currentMonday.getFullYear();
-  const month = String(currentMonday.getMonth() + 1).padStart(2, '0');
-  const day = String(currentMonday.getDate()).padStart(2, '0');
-  const currentWeekStart = `${year}-${month}-${day}`;
+  // Use formatDate(getMonday(...)) to match how week_start_date is stored in the DB
+  const currentWeekStart = formatDate(getMonday(new Date()));
 
   const { data, error } = await supabase
     .from('users')
