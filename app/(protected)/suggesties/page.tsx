@@ -106,7 +106,7 @@ export default function SuggestiesPage() {
     return (
       <div className="container mx-auto px-4 py-6 max-w-6xl">
         <div className="text-center py-12">
-          <p className="text-gray-600">Laden...</p>
+          <p className="text-muted-foreground">Laden...</p>
         </div>
       </div>
     );
@@ -115,24 +115,24 @@ export default function SuggestiesPage() {
   return (
     <div className="container mx-auto px-4 py-6 max-w-3xl">
       <div className="mb-6">
-        <h1 className="text-2xl md:text-3xl font-bold text-gray-900">
+        <h1 className="text-2xl md:text-3xl font-bold text-foreground">
           Product Suggesties 💡
         </h1>
-        <p className="text-gray-600 mt-1">
+        <p className="text-muted-foreground mt-1">
           Mis je een product in de lijst? Stuur een suggestie!
         </p>
       </div>
 
       {/* Success message */}
       {showSuccess && (
-        <div className="mb-6 p-4 bg-emerald-100 border border-emerald-500 rounded-lg text-emerald-800">
+        <div className="mb-6 p-4 bg-emerald-100 dark:bg-emerald-900/30 border border-emerald-500 rounded-lg text-emerald-800 dark:text-emerald-300">
           ✅ Je suggestie is verstuurd! We bekijken het zo snel mogelijk.
         </div>
       )}
 
       {/* Error message */}
       {showError && (
-        <div className="mb-6 p-4 bg-red-100 border border-red-500 rounded-lg text-red-800">
+        <div className="mb-6 p-4 bg-red-100 dark:bg-red-900/30 border border-red-500 rounded-lg text-red-800 dark:text-red-300">
           ❌ Er ging iets mis. Probeer het later opnieuw.
         </div>
       )}
@@ -207,7 +207,7 @@ export default function SuggestiesPage() {
                   ))}
                 </SelectContent>
               </Select>
-              <p className="text-sm text-gray-500">
+              <p className="text-sm text-muted-foreground">
                 Bijvoorbeeld: Kruiden, Specerijen, Knolgewassen, etc.
               </p>
             </div>
@@ -225,13 +225,13 @@ export default function SuggestiesPage() {
       </Card>
 
       {/* Info section */}
-      <Card className="mt-6 bg-blue-50 border-blue-200">
+      <Card className="mt-6 bg-blue-50 dark:bg-blue-950/30 border-blue-200 dark:border-blue-800">
         <CardContent className="pt-6">
           <div className="flex gap-3">
             <span className="text-xl">ℹ️</span>
             <div>
-              <p className="font-medium text-blue-900">Over product suggesties</p>
-              <p className="text-sm text-blue-800 mt-1">
+              <p className="font-medium text-blue-900 dark:text-blue-300">Over product suggesties</p>
+              <p className="text-sm text-blue-800 dark:text-blue-400 mt-1">
                 Je suggestie wordt naar ons team gestuurd. We beoordelen elke suggestie en voegen
                 geschikte producten toe aan de lijst. Dit kan enkele dagen duren.
               </p>

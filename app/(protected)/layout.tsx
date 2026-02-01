@@ -21,11 +21,11 @@ export default function ProtectedLayout({
   const pathname = usePathname();
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-background">
       {/* Mobile header */}
-      <header className="bg-white border-b border-gray-200 sticky top-0 z-10">
+      <header className="bg-card border-b border-border sticky top-0 z-10">
         <div className="px-4 py-3">
-          <h1 className="text-xl font-bold text-emerald-700">Nutrition Nerd</h1>
+          <h1 className="text-xl font-bold text-emerald-700 dark:text-emerald-400">Nutrition Nerd</h1>
         </div>
       </header>
 
@@ -33,7 +33,7 @@ export default function ProtectedLayout({
       <main className="pb-20 md:pb-4">{children}</main>
 
       {/* Mobile bottom navigation */}
-      <nav className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 md:hidden">
+      <nav className="fixed bottom-0 left-0 right-0 bg-card border-t border-border md:hidden">
         <div className="flex justify-around">
           {navigation.map((item) => {
             const Icon = item.icon;
@@ -45,8 +45,8 @@ export default function ProtectedLayout({
                 className={cn(
                   'flex flex-col items-center py-2 px-3 text-xs font-medium transition-colors',
                   isActive
-                    ? 'text-emerald-600'
-                    : 'text-gray-600 hover:text-emerald-600'
+                    ? 'text-emerald-600 dark:text-emerald-400'
+                    : 'text-muted-foreground hover:text-emerald-600 dark:hover:text-emerald-400'
                 )}
               >
                 <Icon className="w-6 h-6 mb-1" />
@@ -58,9 +58,9 @@ export default function ProtectedLayout({
       </nav>
 
       {/* Desktop sidebar */}
-      <aside className="hidden md:block fixed left-0 top-0 h-full w-64 bg-white border-r border-gray-200">
+      <aside className="hidden md:block fixed left-0 top-0 h-full w-64 bg-card border-r border-border">
         <div className="p-6">
-          <h1 className="text-2xl font-bold text-emerald-700">Nutrition Nerd</h1>
+          <h1 className="text-2xl font-bold text-emerald-700 dark:text-emerald-400">Nutrition Nerd</h1>
         </div>
         <nav className="px-3">
           {navigation.map((item) => {
@@ -73,8 +73,8 @@ export default function ProtectedLayout({
                 className={cn(
                   'flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium mb-1 transition-colors',
                   isActive
-                    ? 'bg-emerald-100 text-emerald-700'
-                    : 'text-gray-600 hover:bg-gray-100'
+                    ? 'bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400'
+                    : 'text-muted-foreground hover:bg-accent'
                 )}
               >
                 <Icon className="w-5 h-5" />

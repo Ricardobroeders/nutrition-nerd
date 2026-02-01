@@ -14,7 +14,7 @@ export default function ZoekenPage() {
   return (
     <div className="container mx-auto px-4 py-6 max-w-6xl">
       <div className="text-center py-12">
-        <p className="text-gray-600">Doorverwijzen...</p>
+        <p className="text-muted-foreground">Doorverwijzen...</p>
       </div>
     </div>
   );

@@ -44,6 +44,7 @@ export default function KlassementPage() {
           display_name: user.display_name,
           score: user.average_weekly_items,
           is_current_user: user.id === currentUser.id,
+          subtitle: `${user.weeks_tracked} ${user.weeks_tracked === 1 ? 'week' : 'weken'}`,
         }));
         setAverageWeeklyLeaderboard(averageWeeklyEntries);
 
@@ -80,7 +81,7 @@ export default function KlassementPage() {
     return (
       <div className="container mx-auto px-4 py-6 max-w-6xl">
         <div className="text-center py-12">
-          <p className="text-gray-600">Laden...</p>
+          <p className="text-muted-foreground">Laden...</p>
         </div>
       </div>
     );
@@ -89,16 +90,32 @@ export default function KlassementPage() {
   return (
     <div className="container mx-auto px-4 py-6 max-w-6xl">
       <div className="mb-6">
-        <h1 className="text-2xl md:text-3xl font-bold text-gray-900">
+        <h1 className="text-2xl md:text-3xl font-bold text-foreground">
           Leaderboard 🏆
         </h1>
-        <p className="text-gray-600 mt-1">
+        <p className="text-muted-foreground mt-1">
           Zie hoe je het doet ten opzichte van anderen
         </p>
       </div>
 
       {/* Leaderboards in accordion */}
-      <Accordion type="single" collapsible className="w-full space-y-4 mb-6">
+      <Accordion type="single" collapsible defaultValue="average-weekly" className="w-full space-y-4 mb-6">
+        {/* Average weekly leaderboard */}
+        <Card>
+          <AccordionItem value="average-weekly" className="border-0">
+            <CardHeader className="p-4">
+              <AccordionTrigger className="hover:no-underline py-2">
+                <CardTitle>Gemiddelde Per Week</CardTitle>
+              </AccordionTrigger>
+            </CardHeader>
+            <AccordionContent>
+              <CardContent className="p-4">
+                <LeaderboardTable entries={averageWeeklyLeaderboard} scoreLabel="gemiddeld" />
+              </CardContent>
+            </AccordionContent>
+          </AccordionItem>
+        </Card>
+
         {/* All-time leaderboard */}
         <Card>
           <AccordionItem value="all-time" className="border-0">
@@ -131,22 +148,6 @@ export default function KlassementPage() {
           </AccordionItem>
         </Card>
 
-        {/* Average weekly leaderboard */}
-        <Card>
-          <AccordionItem value="average-weekly" className="border-0">
-            <CardHeader className="p-4">
-              <AccordionTrigger className="hover:no-underline py-2">
-                <CardTitle>Gemiddelde Per Week</CardTitle>
-              </AccordionTrigger>
-            </CardHeader>
-            <AccordionContent>
-              <CardContent className="p-4">
-                <LeaderboardTable entries={averageWeeklyLeaderboard} scoreLabel="gemiddeld" />
-              </CardContent>
-            </AccordionContent>
-          </AccordionItem>
-        </Card>
-
         {/* Weekly streaks leaderboard */}
         <Card>
           <AccordionItem value="weekly-streaks" className="border-0">
@@ -169,12 +170,12 @@ export default function KlassementPage() {
         <CardHeader>
           <CardTitle className="text-lg">Hoe werkt de leaderboard?</CardTitle>
         </CardHeader>
-        <CardContent className="space-y-3 text-sm text-gray-700">
+        <CardContent className="space-y-3 text-sm text-muted-foreground">
           <div className="flex gap-3">
             <span className="text-xl">📊</span>
             <div>
               <p className="font-medium">Unieke Items Tellen</p>
-              <p className="text-gray-600">
+              <p className="text-muted-foreground">
                 Alleen unieke groente en fruit tellen mee. Dezelfde appel twee keer eten telt maar één keer.
               </p>
             </div>
@@ -183,7 +184,7 @@ export default function KlassementPage() {
             <span className="text-xl">🔄</span>
             <div>
               <p className="font-medium">Wekelijkse Reset</p>
-              <p className="text-gray-600">
+              <p className="text-muted-foreground">
                 De wekelijkse ranglijst begint elke maandag opnieuw. Perfect om elkaar uit te dagen!
               </p>
             </div>
@@ -192,7 +193,7 @@ export default function KlassementPage() {
             <span className="text-xl">🏆</span>
             <div>
               <p className="font-medium">Streaks & Prestaties</p>
-              <p className="text-gray-600">
+              <p className="text-muted-foreground">
                 Haal 30+ unieke items per week om je streak te verhogen en een topositie te behouden.
               </p>
             </div>

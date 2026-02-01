@@ -94,7 +94,7 @@ export default function DashboardPage() {
     return (
       <div className="container mx-auto px-4 py-6 max-w-6xl">
         <div className="text-center py-12">
-          <p className="text-gray-600">Laden...</p>
+          <p className="text-muted-foreground">Laden...</p>
         </div>
       </div>
     );
@@ -104,10 +104,10 @@ export default function DashboardPage() {
     <div className="container mx-auto px-4 py-6 max-w-6xl">
       {/* Welcome section */}
       <div className="mb-6">
-        <h1 className="text-2xl md:text-3xl font-bold text-gray-900">
+        <h1 className="text-2xl md:text-3xl font-bold text-foreground">
           Welkom terug, {userProfile?.display_name || user?.email}! 👋
         </h1>
-        <p className="text-gray-600 mt-1">
+        <p className="text-muted-foreground mt-1">
           Vandaag heb je {todaysIntake.length} items gegeten
         </p>
       </div>
@@ -132,13 +132,13 @@ export default function DashboardPage() {
           <CardContent>
             <div className="space-y-2">
               <div className="flex justify-between text-sm">
-                <span className="text-gray-600">Voortgang</span>
-                <span className="font-semibold text-emerald-700">
+                <span className="text-muted-foreground">Voortgang</span>
+                <span className="font-semibold text-emerald-700 dark:text-emerald-400">
                   {weeklyUniqueCount}/30
                 </span>
               </div>
               <Progress value={weeklyProgress} className="h-3" />
-              <p className="text-xs text-gray-500 text-center">
+              <p className="text-xs text-muted-foreground text-center">
                 {30 - weeklyUniqueCount > 0
                   ? `Nog ${30 - weeklyUniqueCount} items te gaan!`
                   : 'Doel behaald! 🎉'}
@@ -162,14 +162,14 @@ export default function DashboardPage() {
               {todaysIntake.map((intake) => (
                 <div
                   key={intake.id}
-                  className="bg-emerald-100 text-emerald-800 px-3 py-1 rounded-full text-sm font-medium"
+                  className="bg-emerald-100 dark:bg-emerald-900/30 text-emerald-800 dark:text-emerald-300 px-3 py-1 rounded-full text-sm font-medium"
                 >
                   {intake.food_item?.name_nl}
                 </div>
               ))}
             </div>
           ) : (
-            <p className="text-gray-500 text-center py-4">
+            <p className="text-muted-foreground text-center py-4">
               Nog niets gegeten vandaag. Voeg hieronder items toe!
             </p>
           )}

@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useRef } from 'react';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -64,6 +64,7 @@ export function FoodSearch({
 }: FoodSearchProps) {
   const [searchQuery, setSearchQuery] = useState('');
   const [typeFilter, setTypeFilter] = useState<FoodType | 'all'>('all');
+  const searchInputRef = useRef<HTMLInputElement>(null);
 
   const filteredItems = useMemo(() => {
     return foodItems.filter((item) => {
@@ -77,12 +78,19 @@ export function FoodSearch({
 
   const isAdded = (itemId: string) => addedItemIds.includes(itemId);
 
+  const handleAdd = (item: FoodItem) => {
+    onAdd(item);
+    setSearchQuery('');
+    searchInputRef.current?.focus();
+  };
+
   return (
     <div className="space-y-4">
       {/* Search bar */}
       <div className="relative">
-        <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+        <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-5 h-5" />
         <Input
+          ref={searchInputRef}
           type="text"
           placeholder="Zoek groente of fruit..."
           value={searchQuery}
@@ -123,8 +131,8 @@ export function FoodSearch({
 
       {/* Results */}
       {searchQuery.length === 0 ? (
-        <div className="text-center py-12 text-gray-500">
-          <Search className="w-12 h-12 mx-auto mb-3 text-gray-400" />
+        <div className="text-center py-12 text-muted-foreground">
+          <Search className="w-12 h-12 mx-auto mb-3 text-muted-foreground" />
           <p className="font-medium">Begin met typen om te zoeken</p>
           <p className="text-sm mt-1">Zoek naar groente of fruit om toe te voegen</p>
         </div>
@@ -134,7 +142,7 @@ export function FoodSearch({
             {filteredItems.map((item) => (
               <Card
                 key={item.id}
-                className={isAdded(item.id) ? 'border-emerald-500 bg-emerald-50' : ''}
+                className={isAdded(item.id) ? 'border-emerald-500 bg-emerald-50 dark:bg-emerald-950/30' : ''}
               >
                 <CardContent className="p-4">
                   <div className="flex items-center justify-between">
@@ -156,7 +164,7 @@ export function FoodSearch({
                     </div>
                     <Button
                       size="icon"
-                      onClick={() => onAdd(item)}
+                      onClick={() => handleAdd(item)}
                       disabled={isAdded(item.id)}
                       className={
                         isAdded(item.id)
@@ -173,7 +181,7 @@ export function FoodSearch({
           </div>
 
           {filteredItems.length === 0 && (
-            <div className="text-center py-8 text-gray-500">
+            <div className="text-center py-8 text-muted-foreground">
               <p>Geen resultaten gevonden</p>
               <p className="text-sm mt-1">Probeer een andere zoekopdracht</p>
             </div>

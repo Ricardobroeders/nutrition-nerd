@@ -240,7 +240,7 @@ export default function IntakePage() {
     return (
       <div className="container mx-auto px-4 py-6 max-w-6xl">
         <div className="text-center py-12">
-          <p className="text-gray-600">Laden...</p>
+          <p className="text-muted-foreground">Laden...</p>
         </div>
       </div>
     );
@@ -249,17 +249,17 @@ export default function IntakePage() {
   return (
     <div className="container mx-auto px-4 py-6 max-w-6xl">
       <div className="mb-6">
-        <h1 className="text-2xl md:text-3xl font-bold text-gray-900">
+        <h1 className="text-2xl md:text-3xl font-bold text-foreground">
           Mijn Intake 📊
         </h1>
-        <p className="text-gray-600 mt-1">
+        <p className="text-muted-foreground mt-1">
           Zoek en beheer je dagelijkse groente en fruit intake
         </p>
       </div>
 
       {/* Success notification */}
       {showSuccess && (
-        <div className="mb-4 p-4 bg-emerald-100 border border-emerald-500 rounded-lg text-emerald-800">
+        <div className="mb-4 p-4 bg-emerald-100 dark:bg-emerald-900/30 border border-emerald-500 rounded-lg text-emerald-800 dark:text-emerald-300">
           ✅ <strong>{lastAddedItem}</strong> toegevoegd aan vandaag!
         </div>
       )}
@@ -303,7 +303,7 @@ export default function IntakePage() {
                   {todaysIntake.map((intake) => (
                     <div
                       key={intake.id}
-                      className="flex items-center justify-between p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors"
+                      className="flex items-center justify-between p-3 bg-muted rounded-lg hover:bg-accent transition-colors"
                     >
                       <div className="flex items-center gap-3">
                         <span className="text-2xl">
@@ -311,7 +311,7 @@ export default function IntakePage() {
                         </span>
                         <div>
                           <p className="font-medium">{intake.food_item?.name_nl}</p>
-                          <p className="text-sm text-gray-600">
+                          <p className="text-sm text-muted-foreground">
                             {intake.food_item?.category || 'Geen categorie'}
                           </p>
                         </div>
@@ -320,7 +320,7 @@ export default function IntakePage() {
                         variant="ghost"
                         size="icon"
                         onClick={() => handleRemoveItem(intake.id)}
-                        className="text-red-600 hover:text-red-700 hover:bg-red-50"
+                        className="text-red-600 hover:text-red-700 hover:bg-red-50 dark:hover:bg-red-950/30"
                       >
                         <X className="w-4 h-4" />
                       </Button>
@@ -329,8 +329,8 @@ export default function IntakePage() {
                 </div>
               ) : (
                 <div className="text-center py-8">
-                  <p className="text-gray-500">Nog niets gegeten vandaag</p>
-                  <p className="text-sm text-gray-400 mt-1">
+                  <p className="text-muted-foreground">Nog niets gegeten vandaag</p>
+                  <p className="text-sm text-muted-foreground mt-1">
                     Gebruik de zoekbalk hierboven om items toe te voegen
                   </p>
                 </div>
@@ -348,17 +348,17 @@ export default function IntakePage() {
               </CardDescription>
             </CardHeader>
             <CardContent>
-              <div className="mb-4 p-4 bg-blue-50 border border-blue-200 rounded-lg">
+              <div className="mb-4 p-4 bg-blue-50 dark:bg-blue-950/30 border border-blue-200 dark:border-blue-800 rounded-lg">
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="font-semibold text-blue-900">Weekdoel: 30 unieke items</p>
-                    <p className="text-sm text-blue-700 mt-1">
+                    <p className="font-semibold text-blue-900 dark:text-blue-300">Weekdoel: 30 unieke items</p>
+                    <p className="text-sm text-blue-700 dark:text-blue-400 mt-1">
                       {weeklyUniqueCount >= 30
                         ? '🎉 Doel behaald!'
                         : `Nog ${30 - weeklyUniqueCount} items te gaan`}
                     </p>
                   </div>
-                  <div className="text-3xl font-bold text-blue-900">
+                  <div className="text-3xl font-bold text-blue-900 dark:text-blue-300">
                     {weeklyUniqueCount}/30
                   </div>
                 </div>
@@ -369,7 +369,7 @@ export default function IntakePage() {
                   {weeklyIntake.map((intake) => (
                     <div
                       key={intake.id}
-                      className="flex items-center justify-between p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors"
+                      className="flex items-center justify-between p-3 bg-muted rounded-lg hover:bg-accent transition-colors"
                     >
                       <div className="flex items-center gap-3">
                         <span className="text-2xl">
@@ -377,7 +377,7 @@ export default function IntakePage() {
                         </span>
                         <div>
                           <p className="font-medium">{intake.food_item?.name_nl}</p>
-                          <p className="text-sm text-gray-600">
+                          <p className="text-sm text-muted-foreground">
                             {formatDisplayDate(intake.intake_date)}
                           </p>
                         </div>
@@ -386,7 +386,7 @@ export default function IntakePage() {
                         variant="ghost"
                         size="icon"
                         onClick={() => handleRemoveItem(intake.id)}
-                        className="text-red-600 hover:text-red-700 hover:bg-red-50"
+                        className="text-red-600 hover:text-red-700 hover:bg-red-50 dark:hover:bg-red-950/30"
                       >
                         <X className="w-4 h-4" />
                       </Button>
@@ -395,8 +395,8 @@ export default function IntakePage() {
                 </div>
               ) : (
                 <div className="text-center py-8">
-                  <p className="text-gray-500">Nog geen intake deze week</p>
-                  <p className="text-sm text-gray-400 mt-1">
+                  <p className="text-muted-foreground">Nog geen intake deze week</p>
+                  <p className="text-sm text-muted-foreground mt-1">
                     Begin vandaag met het toevoegen van items
                   </p>
                 </div>

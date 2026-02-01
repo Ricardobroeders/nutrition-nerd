@@ -18,22 +18,22 @@ export function StreakIndicator({
   const hasReachedGoal = weeklyProgress >= weeklyGoal;
 
   return (
-    <Card className="bg-gradient-to-br from-emerald-50 to-green-50">
+    <Card className="bg-gradient-to-br from-emerald-50 to-green-50 dark:from-emerald-950/30 dark:to-green-950/30">
       <CardContent className="pt-6">
         <div className="flex items-center justify-between mb-4">
           <div>
-            <p className="text-sm text-gray-600">Huidige streak</p>
+            <p className="text-sm text-muted-foreground">Huidige streak</p>
             <div className="flex items-center gap-2 mt-1">
-              <span className="text-3xl font-bold text-emerald-700">
+              <span className="text-3xl font-bold text-emerald-700 dark:text-emerald-400">
                 {currentStreak}
               </span>
               {currentStreak > 0 && <span className="text-2xl">🔥</span>}
             </div>
           </div>
           <div className="text-right">
-            <p className="text-sm text-gray-600">Langste streak</p>
+            <p className="text-sm text-muted-foreground">Langste streak</p>
             <div className="flex items-center gap-2 mt-1 justify-end">
-              <span className="text-3xl font-bold text-gray-700">
+              <span className="text-3xl font-bold text-foreground">
                 {longestStreak}
               </span>
               <span className="text-2xl">🏆</span>
@@ -48,11 +48,11 @@ export function StreakIndicator({
             </Badge>
           )}
           {isAtRisk && (
-            <Badge variant="outline" className="w-full justify-center border-orange-500 text-orange-700">
+            <Badge variant="outline" className="w-full justify-center border-orange-500 text-orange-700 dark:text-orange-400">
               ⚠️ {weeklyGoal - weeklyProgress} items nodig voor streak
             </Badge>
           )}
-          <div className="text-center text-sm text-gray-600 pt-2">
+          <div className="text-center text-sm text-muted-foreground pt-2">
             Deze week: <strong>{weeklyProgress}/{weeklyGoal}</strong> unieke items
           </div>
         </div>
